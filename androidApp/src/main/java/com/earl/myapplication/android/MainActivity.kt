@@ -20,6 +20,7 @@ class MainActivity : ComponentActivity() {
                     color = MaterialTheme.colors.background
                 ) {
                     GreetingView(Greeting().greet())
+
                 }
             }
         }
