@@ -1,3 +1,6 @@
+import Dependencies.Libraries.coroutines
+import Dependencies.Libraries.ktorCore
+
 plugins {
     kotlin("multiplatform")
     id("com.android.library")
@@ -28,7 +31,8 @@ kotlin {
     sourceSets {
         val commonMain by getting {
             dependencies {
-                //put your multiplatform dependencies here
+                implementation(ktorCore)
+                implementation(coroutines)
             }
         }
         val commonTest by getting {
@@ -41,8 +45,8 @@ kotlin {
 
 android {
     namespace = "com.earl.myapplication"
-    compileSdk = 33
+    compileSdk = Dependencies.AndroidAppConfiguration.compileSdk
     defaultConfig {
-        minSdk = 26
+        minSdk = Dependencies.AndroidAppConfiguration.minSdk
     }
 }

@@ -1,3 +1,5 @@
+import Dependencies.Libraries.Android.androidAppDependencies
+
 plugins {
     id("com.android.application")
     kotlin("android")
@@ -5,13 +7,13 @@ plugins {
 
 android {
     namespace = "com.earl.myapplication.android"
-    compileSdk = 33
+    compileSdk = Dependencies.AndroidAppConfiguration.compileSdk
     defaultConfig {
         applicationId = "com.earl.myapplication.android"
-        minSdk = 26
-        targetSdk = 33
-        versionCode = 1
-        versionName = "1.0"
+        minSdk = Dependencies.AndroidAppConfiguration.minSdk
+        targetSdk = Dependencies.AndroidAppConfiguration.targetSdk
+        versionCode = Dependencies.AndroidAppConfiguration.versionCode
+        versionName = Dependencies.AndroidAppConfiguration.versionName
     }
     buildFeatures {
         compose = true
@@ -40,10 +42,5 @@ android {
 
 dependencies {
     implementation(project(":shared"))
-    implementation("androidx.compose.ui:ui:1.4.3")
-    implementation("androidx.compose.ui:ui-tooling:1.4.3")
-    implementation("androidx.compose.ui:ui-tooling-preview:1.4.3")
-    implementation("androidx.compose.foundation:foundation:1.4.3")
-    implementation("androidx.compose.material:material:1.4.3")
-    implementation("androidx.activity:activity-compose:1.7.1")
+    androidAppDependencies()
 }
