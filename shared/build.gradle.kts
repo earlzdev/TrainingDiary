@@ -1,5 +1,11 @@
+import Dependencies.Libraries.contentNegotiation
 import Dependencies.Libraries.coroutines
+import Dependencies.Libraries.koinCore
+import Dependencies.Libraries.kotlinXDateTime
 import Dependencies.Libraries.ktorCore
+import Dependencies.Libraries.ktorLogging
+import Dependencies.Libraries.ktorSerialization
+import Dependencies.Libraries.ktorSerializationJson
 
 plugins {
     kotlin("multiplatform")
@@ -32,7 +38,13 @@ kotlin {
         val commonMain by getting {
             dependencies {
                 implementation(ktorCore)
+                implementation(ktorLogging)
+                implementation(ktorSerialization)
+                implementation(ktorSerializationJson)
                 implementation(coroutines)
+                implementation(kotlinXDateTime)
+                implementation(contentNegotiation)
+                api(koinCore)
             }
         }
         val commonTest by getting {
