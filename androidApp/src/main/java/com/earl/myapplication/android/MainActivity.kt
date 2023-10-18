@@ -10,7 +10,8 @@ import androidx.compose.ui.Modifier
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
-import com.earl.myapplication.android.scenes.TrainingSessionsScene
+import com.earl.design_system.theme.MyApplicationTheme
+import com.earl.training_sessions.ui.TrainingSessionsScene
 import com.earl.myapplication.networking.NetworkClient
 import org.koin.android.ext.android.inject
 

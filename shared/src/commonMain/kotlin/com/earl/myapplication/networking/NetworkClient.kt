@@ -19,7 +19,6 @@ class NetworkClient {
 
     suspend fun doTestRequest() {
         val smth = httpClient.get("http://45.12.19.184/airports?page_size=10")
-        android.util.Log.d("TAG", "doTestRequest: $smth")
     }
 
     private companion object {

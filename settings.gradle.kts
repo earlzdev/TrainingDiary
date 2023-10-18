@@ -16,3 +16,11 @@ dependencyResolutionManagement {
 rootProject.name = "TrainingDiary"
 include(":androidApp")
 include(":shared")
+include(":data")
+include(":data:networking")
+include(":data:networking:networking-utils")
+include(":data:networking:training-sessions-api")
+include(":android-features")
+include(":android-features:training-sessions")
+include(":android-core")
+include(":android-core:design-system")

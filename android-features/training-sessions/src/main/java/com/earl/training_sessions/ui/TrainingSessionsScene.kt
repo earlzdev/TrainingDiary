@@ -1,4 +1,4 @@
-package com.earl.myapplication.android.scenes
+package com.earl.training_sessions.ui
 
 import android.widget.Toast
 import androidx.compose.foundation.layout.Column
@@ -19,8 +19,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import com.earl.myapplication.android.MyApplicationTheme
-import com.earl.myapplication.android.TrainingSessionsViewModel
+import com.earl.design_system.theme.MyApplicationTheme
 import org.koin.androidx.compose.koinViewModel
 
 @Composable

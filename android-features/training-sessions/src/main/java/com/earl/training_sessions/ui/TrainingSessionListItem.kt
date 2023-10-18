@@ -1,4 +1,4 @@
-package com.earl.myapplication.android.scenes
+package com.earl.training_sessions.ui
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -12,8 +12,8 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import com.earl.myapplication.android.MyApplicationTheme
-import com.earl.myapplication.models.TrainingSession
+import com.earl.design_system.theme.MyApplicationTheme
+import com.earl.training_sessions.TrainingSession
 
 @Composable
 fun TrainingSessionListItem(
@@ -50,6 +50,7 @@ fun TrainingSessionListItem_LightTheme() {
             TrainingSession(
                 "test",
                 "01.10.2023 16:42",
+                "Title",
                 "Running",
                 10,
                 "Test"
@@ -66,6 +67,7 @@ fun TrainingSessionListItem_DarkTheme() {
             TrainingSession(
                 "test",
                 "01.10.2023 16:42",
+                "Title",
                 "Running",
                 10,
                 "Test"

@@ -1,4 +1,4 @@
-package com.earl.myapplication.models
+package com.earl.training_sessions
 
 data class TrainingSession(
     val id: String,
