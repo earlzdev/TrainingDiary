@@ -1,4 +1,4 @@
-package com.earl.myapplication.android
+package com.earl.design_system.theme
 
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.foundation.shape.RoundedCornerShape

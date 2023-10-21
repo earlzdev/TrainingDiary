@@ -7,6 +7,7 @@ import Dependencies.Libraries.ktorLogging
 import Dependencies.Libraries.ktorSerialization
 import Dependencies.Libraries.ktorSerializationJson
 
+
 plugins {
     kotlin("multiplatform")
     id("com.android.library")
@@ -23,23 +24,20 @@ kotlin {
             }
         }
     }
-    
+
     listOf(
         iosX64(),
         iosArm64(),
         iosSimulatorArm64()
     ).forEach {
         it.binaries.framework {
-            baseName = "shared"
+            baseName = "networking-utils"
         }
     }
 
     sourceSets {
         val commonMain by getting {
             dependencies {
-                implementation(project(mapOf("path" to ":data:networking:networking-utils")))
-                implementation(project(mapOf("path" to ":data:networking:training-sessions-api:api")))
-                implementation(project(mapOf("path" to ":data:networking:training-sessions-api:implementation")))
                 implementation(ktorCore)
                 implementation(ktorLogging)
                 implementation(ktorSerialization)
@@ -59,9 +57,9 @@ kotlin {
 }
 
 android {
-    namespace = "com.earl.myapplication"
-    compileSdk = Dependencies.AndroidAppConfiguration.compileSdk
+    namespace = "com.earl.networking_utils"
+    compileSdk = 33
     defaultConfig {
-        minSdk = Dependencies.AndroidAppConfiguration.minSdk
+        minSdk = 26
     }
 }
