@@ -42,5 +42,6 @@ android {
 
 dependencies {
     implementation(project(":android-core:design-system"))
+    implementation(project(mapOf("path" to ":data:networking:training-sessions-api:api")))
     androidAppDependencies()
 }

@@ -1,6 +1,9 @@
-package com.earl.myapplication.models
+package com.earl.api.models
 
-data class TrainingSession(
+import kotlinx.serialization.Serializable
+
+@Serializable
+data class TrainingSessionApi(
     val id: String,
     val dateTime: String,
     val title: String,

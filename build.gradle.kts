@@ -5,6 +5,7 @@ plugins {
     kotlin("android").version("1.8.21").apply(false)
     kotlin("multiplatform").version("1.8.21").apply(false)
     id("org.jetbrains.kotlin.jvm") version "1.8.21" apply false
+    id("org.jetbrains.kotlin.plugin.serialization") version "1.6.21"
 }
 
 tasks.register("clean", Delete::class) {

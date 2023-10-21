@@ -13,7 +13,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.earl.design_system.theme.MyApplicationTheme
-import com.earl.training_sessions.TrainingSession
+import com.earl.training_sessions.models.TrainingSession
 
 @Composable
 fun TrainingSessionListItem(

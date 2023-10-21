@@ -19,12 +19,13 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import com.earl.api.TrainingSessionsNetworkApi
+import com.earl.api.models.TrainingSessionApi
 import com.earl.design_system.theme.MyApplicationTheme
-import org.koin.androidx.compose.koinViewModel
 
 @Composable
 fun TrainingSessionsScene(
-    trainingSessionViewModel: TrainingSessionsViewModel = koinViewModel()
+    viewModel: TrainingSessionsViewModel
 ) {
     var showToast by remember { mutableStateOf(false) }
     Surface(
@@ -40,7 +41,7 @@ fun TrainingSessionsScene(
                     .wrapContentSize(Alignment.Center)
                     .padding(top = 30.dp),
                 onClick = {
-                    trainingSessionViewModel.test {
+                    viewModel.test {
                         showToast = true
                     }
                 }
@@ -64,7 +65,7 @@ fun MainScreenScene_LightTheme() {
     MyApplicationTheme(
         darkTheme = false
     ) {
-        TrainingSessionsScene()
+        TrainingSessionsScene(mockViewModel())
     }
 }
 
@@ -74,6 +75,15 @@ fun MainScreenScene_DarkTheme() {
     MyApplicationTheme(
         darkTheme = true
     ) {
-        TrainingSessionsScene()
+        TrainingSessionsScene(mockViewModel())
+    }
+}
+
+
+private fun mockViewModel() = TrainingSessionsViewModel(mockTrainingSessionsNetworkApi())
+
+private fun mockTrainingSessionsNetworkApi() = object: TrainingSessionsNetworkApi {
+    override suspend fun doRequest(): List<TrainingSessionApi> {
+        return emptyList()
     }
 }

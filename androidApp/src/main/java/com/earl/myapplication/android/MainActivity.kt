@@ -12,12 +12,10 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.earl.design_system.theme.MyApplicationTheme
 import com.earl.training_sessions.ui.TrainingSessionsScene
-import com.earl.myapplication.networking.NetworkClient
-import org.koin.android.ext.android.inject
+import com.earl.training_sessions.ui.TrainingSessionsViewModel
+import org.koin.androidx.compose.koinViewModel
 
 class MainActivity : ComponentActivity() {
-
-    private val networkClient: NetworkClient by inject()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -27,9 +25,10 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colors.background
                 ) {
+                    val trainingSessionsViewModel = koinViewModel<TrainingSessionsViewModel>()
                     val navController = rememberNavController()
                     NavHost(navController = navController, startDestination = "main") {
-                        composable("main") { TrainingSessionsScene() }
+                        composable("main") { TrainingSessionsScene(trainingSessionsViewModel) }
                     }
                 }
             }

@@ -8,5 +8,6 @@ import org.koin.dsl.module
 
 fun trainingSessionsModule() = module {
 
-    viewModel { TrainingSessionsViewModel() }
+    viewModel { TrainingSessionsViewModel(get()) }
+
 }

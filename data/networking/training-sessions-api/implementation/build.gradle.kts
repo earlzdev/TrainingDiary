@@ -10,6 +10,7 @@ import Dependencies.Libraries.ktorSerializationJson
 plugins {
     kotlin("multiplatform")
     id("com.android.library")
+    id("kotlinx-serialization")
 }
 
 @OptIn(org.jetbrains.kotlin.gradle.ExperimentalKotlinGradlePluginApi::class)
@@ -30,16 +31,15 @@ kotlin {
         iosSimulatorArm64()
     ).forEach {
         it.binaries.framework {
-            baseName = "shared"
+            baseName = "implementation"
         }
     }
 
     sourceSets {
         val commonMain by getting {
             dependencies {
-                implementation(project(mapOf("path" to ":data:networking:networking-utils")))
                 implementation(project(mapOf("path" to ":data:networking:training-sessions-api:api")))
-                implementation(project(mapOf("path" to ":data:networking:training-sessions-api:implementation")))
+                implementation(project(mapOf("path" to ":data:networking:networking-utils")))
                 implementation(ktorCore)
                 implementation(ktorLogging)
                 implementation(ktorSerialization)
@@ -48,6 +48,8 @@ kotlin {
                 implementation(kotlinXDateTime)
                 implementation(contentNegotiation)
                 api(koinCore)
+                implementation(Dependencies.Libraries.kotlinXSerializationCore)
+                implementation(Dependencies.Libraries.kotlinXSerializationJson)
             }
         }
         val commonTest by getting {
@@ -59,9 +61,9 @@ kotlin {
 }
 
 android {
-    namespace = "com.earl.myapplication"
-    compileSdk = Dependencies.AndroidAppConfiguration.compileSdk
+    namespace = "com.earl.implementation"
+    compileSdk = 33
     defaultConfig {
-        minSdk = Dependencies.AndroidAppConfiguration.minSdk
+        minSdk = 26
     }
 }

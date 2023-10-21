@@ -12,7 +12,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import com.earl.design_system.theme.MyApplicationTheme
-import com.earl.training_sessions.TrainingSession
+import com.earl.training_sessions.models.TrainingSession
 
 @Composable
 fun TrainingSessionsListScene(
@@ -60,11 +60,11 @@ internal object MockData {
         TrainingSession("test", "01.10.2023 16:42", "Test title", "Running", 10, "Test"),
         TrainingSession("test", "01.10.2023 16:42", "Test title", "Running", 10, "Test"),
         TrainingSession("test", "01.10.2023 16:42", "Test title", "Running", 10, "Test"),
-        TrainingSession("test", "01.10.2023 16:42", "Test title", "Running", 10, "Test"),
-        TrainingSession("test", "01.10.2023 16:42", "Test title", "Running", 10, "Test"),
-        TrainingSession("test", "01.10.2023 16:42", "Test title", "Running", 10, "Test"),
-        TrainingSession("test", "01.10.2023 16:42", "Test title", "Running", 10, "Test"),
-        TrainingSession("test", "01.10.2023 16:42", "Test title", "Running", 10, "Test"),
+//        TrainingSession("test", "01.10.2023 16:42", "Test title", "Running", 10, "Test"),
+//        TrainingSession("test", "01.10.2023 16:42", "Test title", "Running", 10, "Test"),
+//        TrainingSession("test", "01.10.2023 16:42", "Test title", "Running", 10, "Test"),
+//        TrainingSession("test", "01.10.2023 16:42", "Test title", "Running", 10, "Test"),
+//        TrainingSession("test", "01.10.2023 16:42", "Test title", "Running", 10, "Test"),
     )
 }
 
