@@ -30,8 +30,6 @@ kotlin {
         val commonMain by getting {
             dependencies {
                 //put your multiplatform dependencies here
-                implementation(Dependencies.Libraries.kotlinXSerializationCore)
-                implementation(Dependencies.Libraries.kotlinXSerializationJson)
                 implementation(Dependencies.Libraries.ktorSerialization)
                 implementation(Dependencies.Libraries.ktorSerializationJson)
             }
@@ -46,8 +44,8 @@ kotlin {
 
 android {
     namespace = "com.earl.api"
-    compileSdk = 33
+    compileSdk = Dependencies.AndroidAppConfiguration.compileSdk
     defaultConfig {
-        minSdk = 26
+        minSdk = Dependencies.AndroidAppConfiguration.minSdk
     }
 }

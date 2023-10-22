@@ -15,6 +15,7 @@ class TrainingSessionsNetworkApiImpl(
     override suspend fun doRequest(): List<TrainingSessionApi> {
         val response = httpClient.get("get-10-sessions")
         val sessionsList = response.body<Array<TrainingSessionApi>>()
+//        android.util.Log.d("TAG", "doRequest: ${sessionsList.size}")
         return sessionsList.toList()
     }
 }

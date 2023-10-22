@@ -48,8 +48,6 @@ kotlin {
                 implementation(kotlinXDateTime)
                 implementation(contentNegotiation)
                 api(koinCore)
-                implementation(Dependencies.Libraries.kotlinXSerializationCore)
-                implementation(Dependencies.Libraries.kotlinXSerializationJson)
             }
         }
         val commonTest by getting {
@@ -62,8 +60,8 @@ kotlin {
 
 android {
     namespace = "com.earl.implementation"
-    compileSdk = 33
+    compileSdk = Dependencies.AndroidAppConfiguration.compileSdk
     defaultConfig {
-        minSdk = 26
+        minSdk = Dependencies.AndroidAppConfiguration.minSdk
     }
 }

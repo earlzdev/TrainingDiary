@@ -1,6 +1,5 @@
 import org.gradle.api.artifacts.Dependency
 import org.gradle.kotlin.dsl.DependencyHandlerScope
-import org.gradle.plugin.use.PluginDependencySpec
 
 data class GradlePlugin(
     val id: String,

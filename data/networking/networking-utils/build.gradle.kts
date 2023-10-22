@@ -58,8 +58,8 @@ kotlin {
 
 android {
     namespace = "com.earl.networking_utils"
-    compileSdk = 33
+    compileSdk = Dependencies.AndroidAppConfiguration.compileSdk
     defaultConfig {
-        minSdk = 26
+        minSdk = Dependencies.AndroidAppConfiguration.minSdk
     }
 }
