@@ -40,6 +40,7 @@ kotlin {
                 implementation(project(mapOf("path" to ":data:networking:networking-utils")))
                 implementation(project(mapOf("path" to ":data:networking:training-sessions-api:api")))
                 implementation(project(mapOf("path" to ":data:networking:training-sessions-api:implementation")))
+                implementation(project(mapOf("path" to ":features:trainings-diary:domain")))
                 implementation(ktorCore)
                 implementation(ktorLogging)
                 implementation(ktorSerialization)

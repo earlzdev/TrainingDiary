@@ -14,6 +14,9 @@
 		844EDB062AECF74200DC003E /* TrainingSessionsListScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 844EDB052AECF74200DC003E /* TrainingSessionsListScene.swift */; };
 		844EDB082AECF7F700DC003E /* TrainingSessionsListItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 844EDB072AECF7F700DC003E /* TrainingSessionsListItem.swift */; };
 		844EDB0B2AECF84000DC003E /* TrainingSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = 844EDB0A2AECF84000DC003E /* TrainingSession.swift */; };
+		844EDB0E2AED57A500DC003E /* TrainingsDiaryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 844EDB0D2AED57A500DC003E /* TrainingsDiaryViewModel.swift */; };
+		844EDB102AED64BE00DC003E /* TrainingsDiaryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 844EDB0F2AED64BE00DC003E /* TrainingsDiaryView.swift */; };
+		844EDB132AED699B00DC003E /* PublishedFlow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 844EDB122AED699B00DC003E /* PublishedFlow.swift */; };
 		84A2A4F92AE53776006DFC62 /* TrainingSessionsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84A2A4F82AE53776006DFC62 /* TrainingSessionsViewModel.swift */; };
 /* End PBXBuildFile section */
 
@@ -40,6 +43,9 @@
 		844EDB052AECF74200DC003E /* TrainingSessionsListScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrainingSessionsListScene.swift; sourceTree = "<group>"; };
 		844EDB072AECF7F700DC003E /* TrainingSessionsListItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrainingSessionsListItem.swift; sourceTree = "<group>"; };
 		844EDB0A2AECF84000DC003E /* TrainingSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrainingSession.swift; sourceTree = "<group>"; };
+		844EDB0D2AED57A500DC003E /* TrainingsDiaryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrainingsDiaryViewModel.swift; sourceTree = "<group>"; };
+		844EDB0F2AED64BE00DC003E /* TrainingsDiaryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrainingsDiaryView.swift; sourceTree = "<group>"; };
+		844EDB122AED699B00DC003E /* PublishedFlow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PublishedFlow.swift; sourceTree = "<group>"; };
 		84A2A4F82AE53776006DFC62 /* TrainingSessionsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrainingSessionsViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -82,6 +88,8 @@
 		7555FF7D242A565900829871 /* iosApp */ = {
 			isa = PBXGroup;
 			children = (
+				844EDB112AED698600DC003E /* utils */,
+				844EDB0C2AED578A00DC003E /* ttrainings-diary */,
 				844EDB002AECE91E00DC003E /* training-sessions */,
 				058557BA273AAA24004C7B11 /* Assets.xcassets */,
 				7555FF82242A565900829871 /* ContentView.swift */,
@@ -116,6 +124,23 @@
 				844EDB0A2AECF84000DC003E /* TrainingSession.swift */,
 			);
 			path = models;
+			sourceTree = "<group>";
+		};
+		844EDB0C2AED578A00DC003E /* ttrainings-diary */ = {
+			isa = PBXGroup;
+			children = (
+				844EDB0D2AED57A500DC003E /* TrainingsDiaryViewModel.swift */,
+				844EDB0F2AED64BE00DC003E /* TrainingsDiaryView.swift */,
+			);
+			path = "ttrainings-diary";
+			sourceTree = "<group>";
+		};
+		844EDB112AED698600DC003E /* utils */ = {
+			isa = PBXGroup;
+			children = (
+				844EDB122AED699B00DC003E /* PublishedFlow.swift */,
+			);
+			path = utils;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -210,11 +235,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				844EDB132AED699B00DC003E /* PublishedFlow.swift in Sources */,
 				844EDB0B2AECF84000DC003E /* TrainingSession.swift in Sources */,
 				84A2A4F92AE53776006DFC62 /* TrainingSessionsViewModel.swift in Sources */,
+				844EDB0E2AED57A500DC003E /* TrainingsDiaryViewModel.swift in Sources */,
 				2152FB042600AC8F00CF470E /* iOSApp.swift in Sources */,
 				844EDB062AECF74200DC003E /* TrainingSessionsListScene.swift in Sources */,
 				844EDB082AECF7F700DC003E /* TrainingSessionsListItem.swift in Sources */,
+				844EDB102AED64BE00DC003E /* TrainingsDiaryView.swift in Sources */,
 				7555FF83242A565900829871 /* ContentView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
