@@ -2,7 +2,11 @@ import Dependencies.Libraries.contentNegotiation
 import Dependencies.Libraries.coroutines
 import Dependencies.Libraries.koinCore
 import Dependencies.Libraries.kotlinXDateTime
+import Dependencies.Libraries.kotlinXSerializationCore
+import Dependencies.Libraries.kotlinXSerializationJson
+import Dependencies.Libraries.ktorClientIOS
 import Dependencies.Libraries.ktorCore
+import Dependencies.Libraries.ktorDarwin
 import Dependencies.Libraries.ktorLogging
 import Dependencies.Libraries.ktorSerialization
 import Dependencies.Libraries.ktorSerializationJson
@@ -51,6 +55,16 @@ kotlin {
         val commonTest by getting {
             dependencies {
                 implementation(kotlin("test"))
+            }
+        }
+        val iosMain by getting {
+            dependencies {
+                implementation(ktorClientIOS)
+                implementation(ktorDarwin)
+//                implementation(kotlinXSerializationCore)
+//                implementation(kotlinXSerializationJson)
+                implementation(ktorSerialization)
+                implementation(ktorSerializationJson)
             }
         }
     }

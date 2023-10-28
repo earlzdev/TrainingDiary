@@ -1,14 +1,26 @@
+//
+//  TrainingSessionsListScene.swift
+//  iosApp
+//
+//  Created by earl on 28.10.2023.
+//  Copyright © 2023 orgName. All rights reserved.
+//
+
 import SwiftUI
-import shared
 
-struct ContentView: View {
+struct TrainingSessionsListScene: View {
     
-    let viewModel: TrainingSessionsViewModel = TrainingSessionsViewModel()
-
-	var body: some View {
-        Button("Do request") {
-            viewModel.test()
+    var trainigSessions: [TrainingSession]
+    
+    var body: some View {
+        return List(trainigSessions) { trainingSession in
+            TrainingSessionsListItem(trainingSession: trainingSession)
         }
+    }
+}
+
+struct TrainingSessionsListScene_Previews: PreviewProvider {
+    static var previews: some View {
         let trainingSessions = [
             TrainingSession(id: "1", dateTime: "2022-01-01 10:00", title: "Morning Run", type: "Running", distance: "5 km", description: "Easy pace"),
             TrainingSession(id: "2", dateTime: "2022-01-02 18:00", title: "Evening Swim", type: "Swimming", distance: "1 km", description: "Freestyle drills"),
@@ -21,13 +33,6 @@ struct ContentView: View {
             TrainingSession(id: "9", dateTime: "2022-01-09 16:00", title: "Strength Training", type: "Fitness", distance: "-", description: "Weightlifting"),
             TrainingSession(id: "10", dateTime: "2022-01-10 11:30", title: "Lunchtime Run", type: "Running", distance: "8 km", description: "Tempo run")
         ]
-        
         TrainingSessionsListScene(trainigSessions: trainingSessions)
-	}
-}
-
-struct ContentView_Previews: PreviewProvider {
-	static var previews: some View {
-		ContentView()
-	}
+    }
 }

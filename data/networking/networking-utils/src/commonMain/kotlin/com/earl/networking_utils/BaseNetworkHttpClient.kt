@@ -30,7 +30,7 @@ class BaseNetworkHttpClient: NetworkClientProvider {
     // FIXME: Need to refactor and move mock build flag to BuildConfig
     private companion object {
 
-        const val MOCK_URL = "10.0.2.2"
-        const val MOCK_PORT = 8000
+        const val MOCK_URL = "45.12.19.184"
+        const val MOCK_PORT = 90
     }
 }
