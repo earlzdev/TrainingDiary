@@ -15,6 +15,7 @@
 		844EDB102AED64BE00DC003E /* TrainingsDiaryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 844EDB0F2AED64BE00DC003E /* TrainingsDiaryView.swift */; };
 		844EDB132AED699B00DC003E /* PublishedFlow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 844EDB122AED699B00DC003E /* PublishedFlow.swift */; };
 		844EDB172AEE338500DC003E /* DepsInjector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 844EDB162AEE338500DC003E /* DepsInjector.swift */; };
+		844EDB1D2AEE50DC00DC003E /* TrainingSessionListItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 844EDB1C2AEE50DC00DC003E /* TrainingSessionListItemView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -41,6 +42,7 @@
 		844EDB0F2AED64BE00DC003E /* TrainingsDiaryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrainingsDiaryView.swift; sourceTree = "<group>"; };
 		844EDB122AED699B00DC003E /* PublishedFlow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PublishedFlow.swift; sourceTree = "<group>"; };
 		844EDB162AEE338500DC003E /* DepsInjector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DepsInjector.swift; sourceTree = "<group>"; };
+		844EDB1C2AEE50DC00DC003E /* TrainingSessionListItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrainingSessionListItemView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -105,6 +107,7 @@
 			children = (
 				844EDB0D2AED57A500DC003E /* TrainingsDiaryViewModel.swift */,
 				844EDB0F2AED64BE00DC003E /* TrainingsDiaryView.swift */,
+				844EDB1C2AEE50DC00DC003E /* TrainingSessionListItemView.swift */,
 			);
 			path = TrainingsDiary;
 			sourceTree = "<group>";
@@ -227,6 +230,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				844EDB132AED699B00DC003E /* PublishedFlow.swift in Sources */,
+				844EDB1D2AEE50DC00DC003E /* TrainingSessionListItemView.swift in Sources */,
 				844EDB0E2AED57A500DC003E /* TrainingsDiaryViewModel.swift in Sources */,
 				2152FB042600AC8F00CF470E /* iOSApp.swift in Sources */,
 				844EDB172AEE338500DC003E /* DepsInjector.swift in Sources */,

@@ -14,10 +14,12 @@ struct TrainingsDiaryView: View {
     
     var body: some View {
         VStack {
-            Text("Title -> \(viewModel.trainingsDiaryModel.title)")
+            List(viewModel.trainingsSessionList, id: \.self) { training in
+                TrainingSessionListItemView(trainingSession: training)
+            }
         }
         .onAppear {
-            self.viewModel.startObserving()
+            self.viewModel.getTrainingSessions()
         }
     }
 }

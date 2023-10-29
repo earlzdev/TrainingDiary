@@ -1,4 +1,4 @@
-package com.earl.myapplication
+package com.earl.myapplication.usecases
 
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.CoroutineScope

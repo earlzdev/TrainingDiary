@@ -1,10 +1,11 @@
 package com.earl.myapplication
 
+import com.earl.data.TrainingsDiaryRepositoryImpl
 import com.earl.domain.TrainingsDiaryRepository
-import com.earl.domain.TrainingsDiaryRepositoryImpl
 import com.earl.domain.TrainingsDiaryUseCase
 import com.earl.domain.TrainingsDiaryUseCaseImpl
 import com.earl.myapplication.di.initKoin
+import com.earl.myapplication.usecases.TrainingsDiaryUseCaseiOS
 import kotlinx.cinterop.ObjCClass
 import kotlinx.cinterop.getOriginalKotlinClass
 import org.koin.core.Koin
@@ -19,7 +20,8 @@ actual fun platformModule() = module {
 
     scope(named(TRAININGS_DIARY_SCOPE_NAME)) {
 
-        scoped<TrainingsDiaryRepository> { TrainingsDiaryRepositoryImpl() }
+//        scoped<TrainingsDiaryNetworkApi> { TrainingsDiaryNetworkApiImpl(get()) }
+        scoped<TrainingsDiaryRepository> { TrainingsDiaryRepositoryImpl(get()) }
 
         scoped<TrainingsDiaryUseCase> { TrainingsDiaryUseCaseImpl(get()) }
         scoped { TrainingsDiaryUseCaseiOS(get()) }

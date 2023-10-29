@@ -1,4 +1,4 @@
-package com.earl.myapplication
+package com.earl.myapplication.utils
 
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Job
