@@ -1,10 +1,8 @@
 package com.earl.domain
 
-import kotlinx.coroutines.flow.Flow
+import com.earl.domain.models.TrainingSession
 
 interface TrainingsDiaryRepository {
 
-    fun getActualData(): Flow<String>
-
-    suspend fun testFoo(): String
+    suspend fun getTrainings(): List<TrainingSession>
 }

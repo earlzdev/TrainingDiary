@@ -1,6 +1,7 @@
 plugins {
     kotlin("multiplatform")
     id("com.android.library")
+    id("kotlinx-serialization")
 }
 
 @OptIn(org.jetbrains.kotlin.gradle.ExperimentalKotlinGradlePluginApi::class)
@@ -21,14 +22,15 @@ kotlin {
         iosSimulatorArm64()
     ).forEach {
         it.binaries.framework {
-            baseName = "domain"
+            baseName = "api"
         }
     }
 
     sourceSets {
         val commonMain by getting {
             dependencies {
-                implementation(Dependencies.Libraries.coroutines)
+                implementation(Dependencies.Libraries.ktorSerialization)
+                implementation(Dependencies.Libraries.ktorSerializationJson)
             }
         }
         val commonTest by getting {
@@ -40,7 +42,7 @@ kotlin {
 }
 
 android {
-    namespace = "com.earl.domain"
+    namespace = "com.earl.api"
     compileSdk = Dependencies.AndroidAppConfiguration.compileSdk
     defaultConfig {
         minSdk = Dependencies.AndroidAppConfiguration.minSdk

@@ -7,7 +7,7 @@ import io.ktor.http.URLProtocol
 import io.ktor.serialization.kotlinx.json.json
 import kotlinx.serialization.json.Json
 
-class BaseNetworkHttpClient: NetworkClientProvider {
+class BaseNetworkHttpClientProvider: NetworkClientProvider {
 
     private val baseHttpClient: HttpClient = HttpClient {
         install(ContentNegotiation) {

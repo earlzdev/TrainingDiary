@@ -1,17 +1,8 @@
 package com.earl.domain
 
-import kotlinx.coroutines.flow.Flow
-import kotlinx.coroutines.flow.StateFlow
+import com.earl.domain.models.TrainingSession
 
 interface TrainingsDiaryUseCase {
 
-//    fun observeTrainingDiary(): StateFlow<TrainingsDiaryModel>
-//
-//    fun fetchActualTrainingDiaryModel()
-//
-//    suspend fun fetchActualTrainingDiaryModelSuspendable()
-
-    fun observeTrainingsDiaryModel(): Flow<TrainingsDiaryModel>
-
-    suspend fun testFoo(): TrainingsDiaryModel
+    suspend fun getTrainings(): List<TrainingSession>
 }

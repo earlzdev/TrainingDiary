@@ -21,13 +21,15 @@ kotlin {
         iosSimulatorArm64()
     ).forEach {
         it.binaries.framework {
-            baseName = "domain"
+            baseName = "data"
         }
     }
 
     sourceSets {
         val commonMain by getting {
             dependencies {
+                implementation(project(mapOf("path" to ":features:trainings-diary:domain")))
+                implementation(project(mapOf("path" to ":data:networking:trainings-diary-api:api")))
                 implementation(Dependencies.Libraries.coroutines)
             }
         }
@@ -40,7 +42,7 @@ kotlin {
 }
 
 android {
-    namespace = "com.earl.domain"
+    namespace = "com.earl.data"
     compileSdk = Dependencies.AndroidAppConfiguration.compileSdk
     defaultConfig {
         minSdk = Dependencies.AndroidAppConfiguration.minSdk

@@ -1,13 +1,13 @@
 package com.earl.myapplication.di
 
-import com.earl.api.TrainingSessionsNetworkApi
+import com.earl.api.TrainingsDiaryNetworkApi
+import com.earl.data.TrainingsDiaryRepositoryImpl
 import com.earl.domain.TrainingsDiaryRepository
-import com.earl.domain.TrainingsDiaryRepositoryImpl
 import com.earl.domain.TrainingsDiaryUseCase
 import com.earl.domain.TrainingsDiaryUseCaseImpl
-import com.earl.implementation.TrainingSessionsNetworkApiImpl
+import com.earl.implementation.TrainingsDiaryNetworkApiImpl
 import com.earl.myapplication.platformModule
-import com.earl.networking_utils.BaseNetworkHttpClient
+import com.earl.networking_utils.BaseNetworkHttpClientProvider
 import com.earl.networking_utils.NetworkClientProvider
 import org.koin.core.KoinApplication
 import org.koin.core.context.startKoin
@@ -20,11 +20,11 @@ fun initKoin(additionalModules: List<Module>): KoinApplication {
     }
 }
 
-fun coreModule() = module {
+private fun coreModule() = module {
 
-    single<NetworkClientProvider> { BaseNetworkHttpClient() }
-    single<TrainingSessionsNetworkApi> { TrainingSessionsNetworkApiImpl(get()) }
+    single<NetworkClientProvider> { BaseNetworkHttpClientProvider() }
+    single<TrainingsDiaryNetworkApi> { TrainingsDiaryNetworkApiImpl(get()) }
 
-    factory<TrainingsDiaryRepository> { TrainingsDiaryRepositoryImpl() }
+    factory<TrainingsDiaryRepository> { TrainingsDiaryRepositoryImpl(get()) }
     factory<TrainingsDiaryUseCase> { TrainingsDiaryUseCaseImpl(get()) }
 }
