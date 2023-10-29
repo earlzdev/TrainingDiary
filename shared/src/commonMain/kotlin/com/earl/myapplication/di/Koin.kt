@@ -22,9 +22,9 @@ fun initKoin(additionalModules: List<Module>): KoinApplication {
 
 fun coreModule() = module {
 
-    single { BaseNetworkHttpClient() as NetworkClientProvider }
-    single { TrainingSessionsNetworkApiImpl(get()) as TrainingSessionsNetworkApi }
+    single<NetworkClientProvider> { BaseNetworkHttpClient() }
+    single<TrainingSessionsNetworkApi> { TrainingSessionsNetworkApiImpl(get()) }
 
-    factory { TrainingsDiaryRepositoryImpl() as TrainingsDiaryRepository }
-    factory { TrainingsDiaryUseCaseImpl(get()) as TrainingsDiaryUseCase }
+    factory<TrainingsDiaryRepository> { TrainingsDiaryRepositoryImpl() }
+    factory<TrainingsDiaryUseCase> { TrainingsDiaryUseCaseImpl(get()) }
 }

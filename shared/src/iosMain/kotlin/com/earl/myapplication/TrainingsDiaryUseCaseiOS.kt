@@ -16,14 +16,4 @@ class TrainingsDiaryUseCaseiOS(
             val res = trainingsDiaryUseCase.testFoo()
         }
     }
-
-//    fun getMoneySummary(): FlowWrapper<HomeModel> =
-//        FlowWrapper(scope, homeUseCase.observeHomeModel())
-//
-//    fun deleteTransaction(transactionId: Long, onError: (UIErrorMessage) -> Unit) {
-//        scope.launch {
-//            val result = homeUseCase.deleteTransaction(transactionId)
-//            result.doOnError { onError(it) }
-//        }
-//    }
 }

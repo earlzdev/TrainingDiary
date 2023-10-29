@@ -2,7 +2,7 @@
 //  PublishedFlow.swift
 //  iosApp
 //
-//  Created by earl on 28.10.2023.
+//  Created by Ilya Saushin on 28.10.2023.
 //  Copyright © 2023 orgName. All rights reserved.
 //
 
