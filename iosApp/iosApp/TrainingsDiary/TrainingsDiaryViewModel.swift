@@ -22,7 +22,8 @@ class TrainingsDiaryViewModel: ObservableObject {
     }
     
     func startObserving() {
-        createPublisher(TrainingSessionsComponent().trainingsDiaryUseCaseiOS.observeTrainingsDiaryModel())
+        let usecase = Di.getTrainingsDiaryUseCase()
+        createPublisher(usecase.observeTrainingsDiaryModel())
                .eraseToAnyPublisher()
                .receive(on: DispatchQueue.global(qos: .userInitiated))
                .sink(

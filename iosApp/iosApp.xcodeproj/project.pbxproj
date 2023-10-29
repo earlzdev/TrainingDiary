@@ -17,6 +17,7 @@
 		844EDB0E2AED57A500DC003E /* TrainingsDiaryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 844EDB0D2AED57A500DC003E /* TrainingsDiaryViewModel.swift */; };
 		844EDB102AED64BE00DC003E /* TrainingsDiaryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 844EDB0F2AED64BE00DC003E /* TrainingsDiaryView.swift */; };
 		844EDB132AED699B00DC003E /* PublishedFlow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 844EDB122AED699B00DC003E /* PublishedFlow.swift */; };
+		844EDB172AEE338500DC003E /* DepsInjector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 844EDB162AEE338500DC003E /* DepsInjector.swift */; };
 		84A2A4F92AE53776006DFC62 /* TrainingSessionsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84A2A4F82AE53776006DFC62 /* TrainingSessionsViewModel.swift */; };
 /* End PBXBuildFile section */
 
@@ -46,6 +47,7 @@
 		844EDB0D2AED57A500DC003E /* TrainingsDiaryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrainingsDiaryViewModel.swift; sourceTree = "<group>"; };
 		844EDB0F2AED64BE00DC003E /* TrainingsDiaryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrainingsDiaryView.swift; sourceTree = "<group>"; };
 		844EDB122AED699B00DC003E /* PublishedFlow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PublishedFlow.swift; sourceTree = "<group>"; };
+		844EDB162AEE338500DC003E /* DepsInjector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DepsInjector.swift; sourceTree = "<group>"; };
 		84A2A4F82AE53776006DFC62 /* TrainingSessionsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrainingSessionsViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -88,13 +90,13 @@
 		7555FF7D242A565900829871 /* iosApp */ = {
 			isa = PBXGroup;
 			children = (
-				844EDB112AED698600DC003E /* utils */,
-				844EDB0C2AED578A00DC003E /* ttrainings-diary */,
+				844EDB152AEE336F00DC003E /* DI */,
+				844EDB142AEE333E00DC003E /* Application */,
+				844EDB112AED698600DC003E /* Utils */,
+				844EDB0C2AED578A00DC003E /* TrainingsDiary */,
 				844EDB002AECE91E00DC003E /* training-sessions */,
 				058557BA273AAA24004C7B11 /* Assets.xcassets */,
-				7555FF82242A565900829871 /* ContentView.swift */,
 				7555FF8C242A565B00829871 /* Info.plist */,
-				2152FB032600AC8F00CF470E /* iOSApp.swift */,
 				058557D7273AAEEB004C7B11 /* Preview Content */,
 			);
 			path = iosApp;
@@ -126,21 +128,38 @@
 			path = models;
 			sourceTree = "<group>";
 		};
-		844EDB0C2AED578A00DC003E /* ttrainings-diary */ = {
+		844EDB0C2AED578A00DC003E /* TrainingsDiary */ = {
 			isa = PBXGroup;
 			children = (
 				844EDB0D2AED57A500DC003E /* TrainingsDiaryViewModel.swift */,
 				844EDB0F2AED64BE00DC003E /* TrainingsDiaryView.swift */,
 			);
-			path = "ttrainings-diary";
+			path = TrainingsDiary;
 			sourceTree = "<group>";
 		};
-		844EDB112AED698600DC003E /* utils */ = {
+		844EDB112AED698600DC003E /* Utils */ = {
 			isa = PBXGroup;
 			children = (
 				844EDB122AED699B00DC003E /* PublishedFlow.swift */,
 			);
-			path = utils;
+			path = Utils;
+			sourceTree = "<group>";
+		};
+		844EDB142AEE333E00DC003E /* Application */ = {
+			isa = PBXGroup;
+			children = (
+				7555FF82242A565900829871 /* ContentView.swift */,
+				2152FB032600AC8F00CF470E /* iOSApp.swift */,
+			);
+			path = Application;
+			sourceTree = "<group>";
+		};
+		844EDB152AEE336F00DC003E /* DI */ = {
+			isa = PBXGroup;
+			children = (
+				844EDB162AEE338500DC003E /* DepsInjector.swift */,
+			);
+			path = DI;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -240,6 +259,7 @@
 				84A2A4F92AE53776006DFC62 /* TrainingSessionsViewModel.swift in Sources */,
 				844EDB0E2AED57A500DC003E /* TrainingsDiaryViewModel.swift in Sources */,
 				2152FB042600AC8F00CF470E /* iOSApp.swift in Sources */,
+				844EDB172AEE338500DC003E /* DepsInjector.swift in Sources */,
 				844EDB062AECF74200DC003E /* TrainingSessionsListScene.swift in Sources */,
 				844EDB082AECF7F700DC003E /* TrainingSessionsListItem.swift in Sources */,
 				844EDB102AED64BE00DC003E /* TrainingsDiaryView.swift in Sources */,
