@@ -2,7 +2,11 @@ import Dependencies.Libraries.contentNegotiation
 import Dependencies.Libraries.coroutines
 import Dependencies.Libraries.koinCore
 import Dependencies.Libraries.kotlinXDateTime
+import Dependencies.Libraries.kotlinXSerializationCore
+import Dependencies.Libraries.kotlinXSerializationJson
+import Dependencies.Libraries.ktorClientIOS
 import Dependencies.Libraries.ktorCore
+import Dependencies.Libraries.ktorDarwin
 import Dependencies.Libraries.ktorLogging
 import Dependencies.Libraries.ktorSerialization
 import Dependencies.Libraries.ktorSerializationJson
@@ -53,13 +57,21 @@ kotlin {
                 implementation(kotlin("test"))
             }
         }
+        val iosMain by getting {
+            dependencies {
+                implementation(ktorClientIOS)
+                implementation(ktorDarwin)
+                implementation(ktorSerialization)
+                implementation(ktorSerializationJson)
+            }
+        }
     }
 }
 
 android {
     namespace = "com.earl.networking_utils"
-    compileSdk = 33
+    compileSdk = Dependencies.AndroidAppConfiguration.compileSdk
     defaultConfig {
-        minSdk = 26
+        minSdk = Dependencies.AndroidAppConfiguration.minSdk
     }
 }

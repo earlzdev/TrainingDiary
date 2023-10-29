@@ -27,8 +27,8 @@ object Dependencies {
     const val koinVersion = "3.2.2"
 
     object AndroidAppConfiguration {
-        const val compileSdk = 34
-        const val targetSdk = 34
+        const val compileSdk = 33
+        const val targetSdk = 33
         const val minSdk = 26
         const val versionCode = 1
         const val versionName = "1.0"
@@ -91,7 +91,7 @@ object Dependencies {
                 add(ktorClientAndroid)
                 add(koinAndroid)
                 add(koinJetpackCompose)
-                add(jetpackComposeNavigation)
+//                add(jetpackComposeNavigation) fixme change version for compile sdk 33
             }
 
             fun DependencyHandlerScope.androidAppDependencies() {

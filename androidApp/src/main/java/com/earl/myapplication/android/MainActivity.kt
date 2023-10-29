@@ -11,8 +11,8 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.earl.design_system.theme.MyApplicationTheme
-import com.earl.training_sessions.ui.TrainingSessionsScene
-import com.earl.training_sessions.ui.TrainingSessionsViewModel
+import com.earl.ui.scenes.TrainingSessionsScene
+import com.earl.ui.TrainingsDiaryViewModel
 import org.koin.androidx.compose.koinViewModel
 
 class MainActivity : ComponentActivity() {
@@ -25,7 +25,7 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colors.background
                 ) {
-                    val trainingSessionsViewModel = koinViewModel<TrainingSessionsViewModel>()
+                    val trainingSessionsViewModel = koinViewModel<TrainingsDiaryViewModel>()
                     val navController = rememberNavController()
                     NavHost(navController = navController, startDestination = "main") {
                         composable("main") { TrainingSessionsScene(trainingSessionsViewModel) }

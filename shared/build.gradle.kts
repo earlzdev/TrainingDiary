@@ -38,8 +38,10 @@ kotlin {
         val commonMain by getting {
             dependencies {
                 implementation(project(mapOf("path" to ":data:networking:networking-utils")))
-                implementation(project(mapOf("path" to ":data:networking:training-sessions-api:api")))
-                implementation(project(mapOf("path" to ":data:networking:training-sessions-api:implementation")))
+                implementation(project(mapOf("path" to ":data:networking:trainings-diary-api:api")))
+                implementation(project(mapOf("path" to ":data:networking:trainings-diary-api:implementation")))
+                implementation(project(mapOf("path" to ":features:trainings-diary:domain")))
+                implementation(project(mapOf("path" to ":features:trainings-diary:data")))
                 implementation(ktorCore)
                 implementation(ktorLogging)
                 implementation(ktorSerialization)
