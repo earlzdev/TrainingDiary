@@ -21,19 +21,14 @@ kotlin {
         iosSimulatorArm64()
     ).forEach {
         it.binaries.framework {
-            baseName = "domain"
+            baseName = "common"
         }
     }
 
     sourceSets {
         val commonMain by getting {
             dependencies {
-                implementation(project(mapOf("path" to ":core:common")))
-                implementation(Dependencies.Libraries.coroutines)
-                implementation(Dependencies.Libraries.mviCore)
-                implementation(Dependencies.Libraries.mviLogging)
-                implementation(Dependencies.Libraries.mviCoroutines)
-                implementation(Dependencies.Libraries.mviMain)
+                //put your multiplatform dependencies here
             }
         }
         val commonTest by getting {
@@ -45,9 +40,9 @@ kotlin {
 }
 
 android {
-    namespace = "com.earl.domain"
-    compileSdk = Dependencies.AndroidAppConfiguration.compileSdk
+    namespace = "com.earl.common"
+    compileSdk = 33
     defaultConfig {
-        minSdk = Dependencies.AndroidAppConfiguration.minSdk
+        minSdk = 26
     }
 }

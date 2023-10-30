@@ -12,7 +12,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import com.earl.design_system.theme.MyApplicationTheme
-import com.earl.domain.models.TrainingSession
+import com.earl.domain.api.models.TrainingSession
 
 @Composable
 fun TrainingSessionsListScene(

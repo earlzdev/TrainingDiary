@@ -1,7 +1,7 @@
 package com.earl.myapplication.usecases
 
-import com.earl.domain.TrainingsDiaryUseCase
-import com.earl.domain.models.TrainingSession
+import com.earl.domain.api.TrainingsDiaryUseCase
+import com.earl.domain.api.models.TrainingSession
 import kotlinx.coroutines.launch
 
 class TrainingsDiaryUseCaseiOS(

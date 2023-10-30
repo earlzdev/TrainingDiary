@@ -3,7 +3,7 @@ package com.earl.api.models
 import kotlinx.serialization.Serializable
 
 @Serializable
-data class TrainingSessionApi(
+data class TrainingSessionResponse(
     val id: String,
     val dateTime: String,
     val title: String,

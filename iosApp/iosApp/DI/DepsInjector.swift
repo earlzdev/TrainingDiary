@@ -36,4 +36,11 @@ class DepsInjector {
         }
         return usecase
     }
+    
+    func getTrainingsDiaryUiStatePublisher() -> TrainingsDiaryStatePublisheriOS {
+        guard let publisher = koin.getFromScope(objCClass: TrainingsDiaryStatePublisheriOS.self) as? TrainingsDiaryStatePublisheriOS else {
+            fatalError("TrainingsDiaryStatePublisheriOS cannot be null")
+        }
+        return publisher
+    }
 }

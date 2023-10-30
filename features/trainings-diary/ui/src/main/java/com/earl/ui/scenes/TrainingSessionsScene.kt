@@ -1,12 +1,15 @@
 package com.earl.ui.scenes
 
+import android.graphics.Color
 import android.widget.Toast
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.wrapContentSize
 import androidx.compose.material.Button
+import androidx.compose.material.CircularProgressIndicator
 import androidx.compose.material.Surface
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
@@ -20,38 +23,51 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import com.earl.common.BaseMapper
 import com.earl.design_system.theme.MyApplicationTheme
-import com.earl.domain.TrainingsDiaryUseCase
-import com.earl.domain.models.TrainingSession
+import com.earl.domain.api.TrainingsDiaryStore
+import com.earl.domain.api.TrainingsDiaryUseCase
+import com.earl.domain.api.models.TrainingSession
+import com.earl.ui.TrainingsDiaryStateUiMapper
 import com.earl.ui.TrainingsDiaryViewModel
+import com.earl.ui.UiState
+import org.koin.androidx.compose.koinViewModel
 
 @Composable
-fun TrainingSessionsScene(
-    viewModel: TrainingsDiaryViewModel
-) {
+fun TrainingSessionsScene() {
     var showToast by remember { mutableStateOf(false) }
-    val trainingsList: List<TrainingSession> by viewModel.trainings.collectAsState(initial = emptyList())
+    val trainingSessionsViewModel = koinViewModel<TrainingsDiaryViewModel>()
+    var state = trainingSessionsViewModel.screenState.collectAsState()
     Surface(
         modifier = Modifier
             .fillMaxSize()
     ) {
         Column {
-            MainScreenStatisticsScene()
-            TrainingSessionsListScene(trainingsList)
-            Button(
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .wrapContentSize(Alignment.Center)
-                    .padding(top = 30.dp),
-                onClick = {
-//                    viewModel.test {
-//                        showToast = true
-//                    }
+            when {
+                state.value.isLoading -> {
+                    CircularProgressIndicator(
+                        modifier = Modifier.size(50.dp),
+                        color = androidx.compose.ui.graphics.Color.Blue,
+                        strokeWidth = 5.dp
+                    )
                 }
-            ) {
-                Text(text = "Add new training")
+                state.value.trainingSessionsList.isNotEmpty() -> {
+                    MainScreenStatisticsScene()
+                    TrainingSessionsListScene(state.value.trainingSessionsList)
+                    Button(
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .wrapContentSize(Alignment.Center)
+                            .padding(top = 30.dp),
+                        onClick = {
+
+                        }
+                    ) {
+                        Text(text = "Add new training")
+                    }
+                }
+                }
             }
-        }
         if (showToast) {
             Toast.makeText(
                 LocalContext.current,
@@ -68,7 +84,7 @@ fun MainScreenScene_LightTheme() {
     MyApplicationTheme(
         darkTheme = false
     ) {
-        TrainingSessionsScene(mockViewModel())
+        TrainingSessionsScene()
     }
 }
 
@@ -78,15 +94,6 @@ fun MainScreenScene_DarkTheme() {
     MyApplicationTheme(
         darkTheme = true
     ) {
-        TrainingSessionsScene(mockViewModel())
-    }
-}
-
-
-private fun mockViewModel() = TrainingsDiaryViewModel(mockTrainingDiaryUseCase())
-
-private fun mockTrainingDiaryUseCase() = object: TrainingsDiaryUseCase {
-    override suspend fun getTrainings(): List<TrainingSession> {
-        return emptyList()
+        TrainingSessionsScene()
     }
 }
