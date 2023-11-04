@@ -42,6 +42,7 @@ android {
 
 dependencies {
 
+    implementation(project(":shared"))
     implementation(project(mapOf("path" to ":features:trainings-diary:domain")))
     implementation(project(mapOf("path" to ":core:common")))
     implementation(project(":core:android-design-system"))

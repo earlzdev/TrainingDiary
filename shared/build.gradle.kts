@@ -10,6 +10,7 @@ import Dependencies.Libraries.ktorSerializationJson
 plugins {
     kotlin("multiplatform")
     id("com.android.library")
+    id("dev.icerock.mobile.multiplatform-resources")
 }
 
 @OptIn(org.jetbrains.kotlin.gradle.ExperimentalKotlinGradlePluginApi::class)
@@ -31,12 +32,15 @@ kotlin {
     ).forEach {
         it.binaries.framework {
             baseName = "shared"
+            export("dev.icerock.moko:resources:0.23.0")
+            export("dev.icerock.moko:graphics:0.9.0")
         }
     }
 
     sourceSets {
         val commonMain by getting {
             dependencies {
+                api("dev.icerock.moko:resources:0.23.0")
                 implementation(project(mapOf("path" to ":data:networking:networking-utils")))
                 implementation(project(mapOf("path" to ":data:networking:trainings-diary-api:api")))
                 implementation(project(mapOf("path" to ":data:networking:trainings-diary-api:implementation")))
@@ -72,4 +76,9 @@ android {
     defaultConfig {
         minSdk = Dependencies.AndroidAppConfiguration.minSdk
     }
+}
+
+multiplatformResources {
+    multiplatformResourcesPackage = "com.earl.shared_resources"
+    multiplatformResourcesClassName = "SharedResources"
 }

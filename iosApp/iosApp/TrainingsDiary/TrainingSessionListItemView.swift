@@ -17,12 +17,13 @@ struct TrainingSessionListItemView: View {
         VStack {
             Text("Trainig - \(trainingSession.title)")
             Text("Date - \(trainingSession.dateTime)")
+            
         }
     }
 }
 
-struct TrainingSessionListItemView_Previews: PreviewProvider {
-    static var previews: some View {
-        TrainingSessionListItemView(trainingSession: DomainTrainingSession(id: "Id", dateTime: "12.12.2023", title: "Mock training", type: "Swimming", distance: 2, description: "Mock description"))
-    }
-}
+//struct TrainingSessionListItemView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        TrainingSessionListItemView(trainingSession: DomainTrainingSession(id: "Id", dateTime: "12.12.2023", title: "Mock training", type: "Swimming", distance: 2, description: "Mock description"))
+//    }
+//}

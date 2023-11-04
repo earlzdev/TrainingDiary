@@ -11,8 +11,8 @@ import androidx.compose.material.icons.filled.Add
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
-import com.earl.common.ErrorModel
 import com.earl.android_design_system.theme.MyApplicationTheme
+import com.earl.common.ErrorModel
 import com.earl.domain.api.models.TrainingSession
 import com.earl.ui_android.UiState
 
