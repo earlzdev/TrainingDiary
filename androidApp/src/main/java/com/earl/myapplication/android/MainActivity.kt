@@ -22,8 +22,8 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
 import com.earl.api.Screen
-import com.earl.design_system.theme.MyApplicationTheme
-import com.earl.ui_android.scenes.TrainingSessionsScene
+import com.earl.android_design_system.theme.MyApplicationTheme
+import com.earl.ui_android.scenes.TrainingsDiaryMainScene
 
 class MainActivity : ComponentActivity() {
 
@@ -40,7 +40,7 @@ class MainActivity : ComponentActivity() {
 @Composable
 fun RootScene() {
     val navController = rememberNavController()
-    val items = listOf(
+    val bottomTabScreens = listOf(
         Screen.TrainingsDiary,
         Screen.Profile
     )
@@ -49,7 +49,7 @@ fun RootScene() {
             BottomNavigation {
                 val navBackStackEntry by navController.currentBackStackEntryAsState()
                 val currentDestination = navBackStackEntry?.destination
-                items.forEach { screen ->
+                bottomTabScreens.forEach { screen ->
                     BottomNavigationItem(
                         icon = { Icon(Icons.Filled.Favorite, contentDescription = null) },
                         label = { Text(screen.title) },
@@ -75,7 +75,7 @@ fun RootScene() {
         }
     ) { innerPadding ->
         NavHost(navController, startDestination = Screen.TrainingsDiary.route, Modifier.padding(innerPadding)) {
-            composable(Screen.TrainingsDiary.route) { TrainingSessionsScene() }
+            composable(Screen.TrainingsDiary.route) { TrainingsDiaryMainScene(navController) }
             composable(Screen.Profile.route) { ProfileScreenStub() }
         }
     }

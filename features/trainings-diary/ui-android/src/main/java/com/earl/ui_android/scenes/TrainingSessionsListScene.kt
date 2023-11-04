@@ -11,12 +11,28 @@ import androidx.compose.material.icons.filled.Add
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
-import com.earl.design_system.theme.MyApplicationTheme
+import com.earl.common.ErrorModel
+import com.earl.android_design_system.theme.MyApplicationTheme
 import com.earl.domain.api.models.TrainingSession
+import com.earl.ui_android.UiState
 
 @Composable
 fun TrainingSessionsListScene(
-    sessionsList: List<TrainingSession>
+    uiState: UiState
+) {
+    when {
+        uiState.isLoading -> LoadingContentScene(Modifier)
+        uiState.trainingSessionsList.isNotEmpty() ->
+            TrainingsSessionsList(uiState.trainingSessionsList)
+        uiState.error != ErrorModel.None -> {
+
+        }
+    }
+}
+
+@Composable
+private fun TrainingsSessionsList(
+    listItems: List<TrainingSession>
 ) {
     Column(
         modifier = Modifier
@@ -32,7 +48,7 @@ fun TrainingSessionsListScene(
             )
         }
         LazyColumn {
-            items(sessionsList) { session ->
+            items(listItems) { session ->
                 TrainingSessionListItem(session = session)
             }
         }
@@ -43,7 +59,7 @@ fun TrainingSessionsListScene(
 @Composable
 private fun TrainingSessionsListScene_LightTheme() {
     MyApplicationTheme(darkTheme = false) {
-        TrainingSessionsListScene(MockData.trainingSessionsList)
+        TrainingSessionsListScene(MockObjects.loadingState)
     }
 }
 
@@ -51,21 +67,9 @@ private fun TrainingSessionsListScene_LightTheme() {
 @Composable
 private fun TrainingSessionsListScene_DarkTheme() {
     MyApplicationTheme(darkTheme = true) {
-        TrainingSessionsListScene(MockData.trainingSessionsList)
+        TrainingSessionsListScene(uiState = MockObjects.successfulLoadedState)
     }
 }
 
-internal object MockData {
-    val trainingSessionsList = listOf(
-        TrainingSession("test", "01.10.2023 16:42", "Test title", "Running", 10, "Test"),
-        TrainingSession("test", "01.10.2023 16:42", "Test title", "Running", 10, "Test"),
-        TrainingSession("test", "01.10.2023 16:42", "Test title", "Running", 10, "Test"),
-//        TrainingSession("test", "01.10.2023 16:42", "Test title", "Running", 10, "Test"),
-//        TrainingSession("test", "01.10.2023 16:42", "Test title", "Running", 10, "Test"),
-//        TrainingSession("test", "01.10.2023 16:42", "Test title", "Running", 10, "Test"),
-//        TrainingSession("test", "01.10.2023 16:42", "Test title", "Running", 10, "Test"),
-//        TrainingSession("test", "01.10.2023 16:42", "Test title", "Running", 10, "Test"),
-    )
-}
 
 

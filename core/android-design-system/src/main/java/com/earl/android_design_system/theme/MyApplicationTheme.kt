@@ -1,4 +1,4 @@
-package com.earl.design_system.theme
+package com.earl.android_design_system.theme
 
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -24,13 +24,17 @@ fun MyApplicationTheme(
         darkColors(
             primary = Color(0xFFBB86FC),
             primaryVariant = Color(0xFF3700B3),
-            secondary = Color(0xFF03DAC5)
+            secondary = Color(0xFF03DAC5),
+            background = Color(0xFF000000),
+            onBackground = Color(0xFF222222)
         )
     } else {
         lightColors(
             primary = Color(0xFF6200EE),
             primaryVariant = Color(0xFF3700B3),
-            secondary = Color(0xFF03DAC5)
+            secondary = Color(0xFF03DAC5),
+            background = Color(0xFFE3E3E3),
+            onBackground = Color(0xFFF4F4F4)
         )
     }
     val typography = Typography(

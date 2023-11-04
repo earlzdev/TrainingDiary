@@ -12,30 +12,43 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import com.earl.design_system.theme.MyApplicationTheme
+import com.earl.common.ErrorModel
+import com.earl.android_design_system.theme.MyApplicationTheme
+import com.earl.ui_android.UiState
 
 @Composable
-fun MainScreenStatisticsScene() {
-    Card(
-        modifier = Modifier
-            .fillMaxWidth()
-            .height(200.dp)
-    ) {
-        Column(
-            modifier = Modifier
-                .fillMaxSize(),
-            horizontalAlignment = Alignment.CenterHorizontally,
-            verticalArrangement = Arrangement.Center,
-        ) {
-            Text(
-                text = "Weekly kilometers: %s"
-            )
-            Text(
-                text = "Monthly kilometers: %s"
-            )
-            Text(
-                text = "Sessions count: %s"
-            )
+fun MainScreenStatisticsScene(
+    state: UiState
+) {
+    val modifier = Modifier
+        .fillMaxWidth()
+        .height(200.dp)
+    when {
+        state.isLoading -> LoadingContentScene(modifier)
+        state.error != ErrorModel.None -> {
+
+        }
+        state.trainingSessionsList.isNotEmpty() -> {
+            Card(
+                modifier = modifier
+            ) {
+                Column(
+                    modifier = Modifier
+                        .fillMaxSize(),
+                    horizontalAlignment = Alignment.CenterHorizontally,
+                    verticalArrangement = Arrangement.Center,
+                ) {
+                    Text(
+                        text = "Weekly kilometers: %s"
+                    )
+                    Text(
+                        text = "Monthly kilometers: %s"
+                    )
+                    Text(
+                        text = "Sessions count: %s"
+                    )
+                }
+            }
         }
     }
 }
@@ -46,7 +59,7 @@ private fun MainScreenStatisticsScene_LightTheme() {
     MyApplicationTheme(
         darkTheme = false
     ) {
-        MainScreenStatisticsScene()
+        MainScreenStatisticsScene(MockObjects.successfulLoadedState)
     }
 }
 
@@ -56,6 +69,6 @@ private fun MainScreenStatisticsScene_DarkTheme() {
     MyApplicationTheme(
         darkTheme = true
     ) {
-        MainScreenStatisticsScene()
+        MainScreenStatisticsScene(MockObjects.loadingState)
     }
 }
