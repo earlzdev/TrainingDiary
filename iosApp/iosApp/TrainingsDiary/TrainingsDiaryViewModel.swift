@@ -22,16 +22,7 @@ class TrainingsDiaryViewModel: ObservableObject {
             .receive(on: DispatchQueue.global(qos: .userInitiated))
             .sink(
                 receiveCompletion: { completion in
-//                        if case let .failure(error) = completion {
-//                            let moneyFlowError = MoneyFlowError.GetMoneySummary(throwable:  error.throwable)
-//                            error.throwable.logError(
-//                                moneyFlowError: moneyFlowError,
-//                                message: "Got error while transforming Flow to Publisher"
-//                            )
-//                            let uiErrorMessage = DI.getErrorMapper().getUIErrorMessage(error: moneyFlowError)
-//                            self.homeModel = HomeModel.Error(uiErrorMessage: uiErrorMessage)
-//                        }
-                        print("SMTH")
+                    print("SMTH \(completion)")
                 },
                 receiveValue: { genericResponse in
                     onMainThread {
@@ -48,17 +39,4 @@ class TrainingsDiaryViewModel: ObservableObject {
     func loadTrainingSessions() {
         uiStatePublisher.loadTrainingSessions()
     }
-    
-//    @Published var trainingsSessionList: [DomainTrainingSession] = []
-//    private let usecase = Di.getTrainingsDiaryUseCase()
-//    
-//    func getTrainingSessions() {
-//        usecase.getTrainingSessions(onSuccess: { list in
-//            onMainThread {
-//                self.trainingsSessionList = list
-//            }
-//        }, onError: { error in
-//            print("error -> \(error)")
-//        })
-//    }
 }

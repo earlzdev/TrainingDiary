@@ -38,7 +38,6 @@ internal class MainExecutor(
         getState: () -> TrainingsDiaryStore.State,
     ) = when (intent) {
         is TrainingsDiaryStore.Intent.Load -> getTrainingSessions()
-        else -> throw IllegalStateException("No such intent")
     }
 
     private suspend fun getTrainingSessions() {
