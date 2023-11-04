@@ -1,22 +1,46 @@
 package com.earl.ui
 
-import android.util.Log
 import androidx.lifecycle.ViewModel
-import androidx.lifecycle.viewModelScope
-import com.earl.domain.TrainingsDiaryUseCase
-import kotlinx.coroutines.flow.SharingStarted
-import kotlinx.coroutines.flow.flow
-import kotlinx.coroutines.flow.stateIn
+import com.arkivanov.mvikotlin.core.binder.Binder
+import com.arkivanov.mvikotlin.extensions.coroutines.bind
+import com.arkivanov.mvikotlin.extensions.coroutines.states
+import com.earl.common.BaseMapper
+import com.earl.domain.api.TrainingsDiaryStore
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.StateFlow
+import kotlinx.coroutines.flow.asStateFlow
+import kotlinx.coroutines.flow.map
 
 class TrainingsDiaryViewModel(
-    private val trainingsDiaryUseCase: TrainingsDiaryUseCase
+    private val store: TrainingsDiaryStore,
+    private val stateMapper: BaseMapper<TrainingsDiaryStore.State, UiState>
 ): ViewModel() {
 
-    val trainings = flow {
-        try {
-            emit(trainingsDiaryUseCase.getTrainings())
-        } catch (e: Exception) {
-            Log.d("TAG1", "trainings exc -> $e")
+    private val _screenState = MutableStateFlow(UiState())
+    val screenState: StateFlow<UiState>
+        get() = _screenState.asStateFlow()
+
+    private val binder: Binder
+
+    init {
+        binder = bind(Dispatchers.Main.immediate) {
+            store.states.map(stateMapper::map) bindTo (::acceptState)
         }
-    }.stateIn(viewModelScope, SharingStarted.Lazily, emptyList())
+        binder.start()
+
+        loadTrainingSessions()
+    }
+
+    private fun acceptState(state: UiState) {
+        _screenState.tryEmit(state)
+    }
+
+    private fun loadTrainingSessions() = store.accept(TrainingsDiaryStore.Intent.Load)
+
+    override fun onCleared() {
+        super.onCleared()
+        binder.stop()
+        store.dispose()
+    }
 }

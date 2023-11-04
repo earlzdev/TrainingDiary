@@ -1,6 +1,6 @@
-package com.earl.domain
+package com.earl.domain.api
 
-import com.earl.domain.models.TrainingSession
+import com.earl.domain.api.models.TrainingSession
 
 interface TrainingsDiaryUseCase {
 

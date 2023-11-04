@@ -1,10 +1,15 @@
 package com.earl.myapplication
 
+import com.earl.common.BaseMapper
 import com.earl.data.TrainingsDiaryRepositoryImpl
-import com.earl.domain.TrainingsDiaryRepository
-import com.earl.domain.TrainingsDiaryUseCase
-import com.earl.domain.TrainingsDiaryUseCaseImpl
+import com.earl.domain.api.TrainingsDiaryStatePublisher
+import com.earl.domain.api.TrainingsDiaryRepository
+import com.earl.domain.api.TrainingsDiaryStore
+import com.earl.domain.api.TrainingsDiaryUseCase
+import com.earl.domain.implementation.TrainingsDiaryStatePublisherImpl
+import com.earl.domain.implementation.TrainingsDiaryUseCaseImpl
 import com.earl.myapplication.di.initKoin
+import com.earl.myapplication.usecases.TrainingsDiaryStatePublisheriOS
 import com.earl.myapplication.usecases.TrainingsDiaryUseCaseiOS
 import kotlinx.cinterop.ObjCClass
 import kotlinx.cinterop.getOriginalKotlinClass
@@ -20,8 +25,11 @@ actual fun platformModule() = module {
 
     scope(named(TRAININGS_DIARY_SCOPE_NAME)) {
 
-//        scoped<TrainingsDiaryNetworkApi> { TrainingsDiaryNetworkApiImpl(get()) }
         scoped<TrainingsDiaryRepository> { TrainingsDiaryRepositoryImpl(get()) }
+
+        scoped<TrainingsDiaryStatePublisher> { TrainingsDiaryStatePublisherImpl(get()) }
+        scoped<BaseMapper<TrainingsDiaryStore.State, TrainingsDiaryUiStateiOS>> { TrainingsDiaryUiStateToIosStateMapper() }
+        scoped { TrainingsDiaryStatePublisheriOS(get(), get()) }
 
         scoped<TrainingsDiaryUseCase> { TrainingsDiaryUseCaseImpl(get()) }
         scoped { TrainingsDiaryUseCaseiOS(get()) }

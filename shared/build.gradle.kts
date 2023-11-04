@@ -42,6 +42,7 @@ kotlin {
                 implementation(project(mapOf("path" to ":data:networking:trainings-diary-api:implementation")))
                 implementation(project(mapOf("path" to ":features:trainings-diary:domain")))
                 implementation(project(mapOf("path" to ":features:trainings-diary:data")))
+                implementation(project(mapOf("path" to ":core:common")))
                 implementation(ktorCore)
                 implementation(ktorLogging)
                 implementation(ktorSerialization)
@@ -50,6 +51,11 @@ kotlin {
                 implementation(kotlinXDateTime)
                 implementation(contentNegotiation)
                 api(koinCore)
+
+                implementation(Dependencies.Libraries.mviCore)
+                implementation(Dependencies.Libraries.mviLogging)
+                implementation(Dependencies.Libraries.mviCoroutines)
+                implementation(Dependencies.Libraries.mviMain)
             }
         }
         val commonTest by getting {

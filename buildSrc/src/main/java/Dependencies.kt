@@ -1,5 +1,5 @@
-import org.gradle.kotlin.dsl.DependencyHandlerScope
 import DependencyHandlerExtensions.implementation
+import org.gradle.kotlin.dsl.DependencyHandlerScope
 
 object Dependencies {
 
@@ -25,6 +25,9 @@ object Dependencies {
 
     /** Koin */
     const val koinVersion = "3.2.2"
+
+    /** MVI Kotlin */
+    private const val mviVersion = "3.0.2"
 
     object AndroidAppConfiguration {
         const val compileSdk = 33
@@ -72,6 +75,12 @@ object Dependencies {
         const val koinCore = "io.insert-koin:koin-core:$koinVersion"
         const val koinAndroid = "io.insert-koin:koin-android:$koinVersion"
         const val koinJetpackCompose = "io.insert-koin:koin-androidx-compose:$koinVersion"
+
+        /** MVI */
+        const val mviCore = "com.arkivanov.mvikotlin:mvikotlin:$mviVersion"
+        const val mviMain = "com.arkivanov.mvikotlin:mvikotlin-main:$mviVersion"
+        const val mviLogging = "com.arkivanov.mvikotlin:mvikotlin-logging:$mviVersion"
+        const val mviCoroutines = "com.arkivanov.mvikotlin:mvikotlin-extensions-coroutines:$mviVersion"
 
         object Android {
 

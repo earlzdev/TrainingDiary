@@ -25,10 +25,9 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colors.background
                 ) {
-                    val trainingSessionsViewModel = koinViewModel<TrainingsDiaryViewModel>()
                     val navController = rememberNavController()
                     NavHost(navController = navController, startDestination = "main") {
-                        composable("main") { TrainingSessionsScene(trainingSessionsViewModel) }
+                        composable("main") { TrainingSessionsScene() }
                     }
                 }
             }

@@ -43,6 +43,11 @@ android {
 dependencies {
 
     implementation(project(mapOf("path" to ":features:trainings-diary:domain")))
+    implementation(project(mapOf("path" to ":core:common")))
     implementation(project(":android-core:design-system"))
+    implementation(Dependencies.Libraries.mviCore)
+    implementation(Dependencies.Libraries.mviLogging)
+    implementation(Dependencies.Libraries.mviCoroutines)
+    implementation(Dependencies.Libraries.mviMain)
     androidAppDependencies()
 }

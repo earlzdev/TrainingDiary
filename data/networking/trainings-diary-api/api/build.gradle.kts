@@ -29,6 +29,7 @@ kotlin {
     sourceSets {
         val commonMain by getting {
             dependencies {
+                implementation(project(mapOf("path" to ":core:common")))
                 implementation(Dependencies.Libraries.ktorSerialization)
                 implementation(Dependencies.Libraries.ktorSerializationJson)
             }
