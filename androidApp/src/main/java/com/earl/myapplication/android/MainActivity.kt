@@ -11,9 +11,7 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.earl.design_system.theme.MyApplicationTheme
-import com.earl.ui.scenes.TrainingSessionsScene
-import com.earl.ui.TrainingsDiaryViewModel
-import org.koin.androidx.compose.koinViewModel
+import com.earl.ui_android.scenes.TrainingSessionsScene
 
 class MainActivity : ComponentActivity() {
 

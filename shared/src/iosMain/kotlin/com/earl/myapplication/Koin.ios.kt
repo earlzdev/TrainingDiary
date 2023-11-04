@@ -9,7 +9,9 @@ import com.earl.domain.api.TrainingsDiaryUseCase
 import com.earl.domain.implementation.TrainingsDiaryStatePublisherImpl
 import com.earl.domain.implementation.TrainingsDiaryUseCaseImpl
 import com.earl.myapplication.di.initKoin
-import com.earl.myapplication.usecases.TrainingsDiaryStatePublisheriOS
+import com.earl.myapplication.uiStates.trainingsDiary.TrainingsDiaryUiStateiOS
+import com.earl.myapplication.uiStates.mappers.TrainingsDiaryUiStateToIosStateMapper
+import com.earl.myapplication.uiStates.trainingsDiary.TrainingsDiaryStatePublisheriOS
 import com.earl.myapplication.usecases.TrainingsDiaryUseCaseiOS
 import kotlinx.cinterop.ObjCClass
 import kotlinx.cinterop.getOriginalKotlinClass

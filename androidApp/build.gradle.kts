@@ -42,7 +42,7 @@ android {
 
 dependencies {
     implementation(project(":shared"))
-    implementation(project(":features:trainings-diary:ui"))
-    implementation(project(":android-core:design-system"))
+    implementation(project(":features:trainings-diary:ui-android"))
+    implementation(project(":core:android-design-system"))
     androidAppDependencies()
 }
