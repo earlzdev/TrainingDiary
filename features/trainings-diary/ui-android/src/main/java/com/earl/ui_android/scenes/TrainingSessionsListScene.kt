@@ -21,7 +21,7 @@ fun TrainingSessionsListScene(
     uiState: UiState
 ) {
     when {
-        uiState.isLoading -> LoadingContentScene(Modifier)
+        uiState.isLoading -> LoadingContentScene()
         uiState.trainingSessionsList.isNotEmpty() ->
             TrainingsSessionsList(uiState.trainingSessionsList)
         uiState.error != ErrorModel.None -> {

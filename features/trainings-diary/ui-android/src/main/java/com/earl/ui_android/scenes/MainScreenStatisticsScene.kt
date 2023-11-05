@@ -1,10 +1,13 @@
 package com.earl.ui_android.scenes
 
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.Card
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
@@ -20,35 +23,54 @@ import com.earl.ui_android.UiState
 fun MainScreenStatisticsScene(
     state: UiState
 ) {
-    val modifier = Modifier
-        .fillMaxWidth()
-        .height(200.dp)
     when {
-        state.isLoading -> LoadingContentScene(modifier)
-        state.error != ErrorModel.None -> {
+        state.isLoading -> LoadingContentScene()
+        state.error != ErrorModel.None -> StatisticsLoadingError()
+        state.trainingSessionsList.isNotEmpty() -> StatisticsCard()
+    }
+}
 
+@Composable
+private fun StatisticsLoadingError() {
+    Card(
+        modifier = Modifier
+            .fillMaxWidth()
+            .height(200.dp)
+            .padding(20.dp),
+        shape = RoundedCornerShape(10.dp)
+    ) {
+        Box(
+            contentAlignment = Alignment.Center,
+        ) {
+            Text(
+                text = "An unknown error occured"
+            )
         }
-        state.trainingSessionsList.isNotEmpty() -> {
-            Card(
-                modifier = modifier
-            ) {
-                Column(
-                    modifier = Modifier
-                        .fillMaxSize(),
-                    horizontalAlignment = Alignment.CenterHorizontally,
-                    verticalArrangement = Arrangement.Center,
-                ) {
-                    Text(
-                        text = "Weekly kilometers: %s"
-                    )
-                    Text(
-                        text = "Monthly kilometers: %s"
-                    )
-                    Text(
-                        text = "Sessions count: %s"
-                    )
-                }
-            }
+    }
+}
+
+@Composable
+private fun StatisticsCard() {
+    Card(
+        modifier = Modifier
+            .fillMaxWidth()
+            .height(200.dp)
+    ) {
+        Column(
+            modifier = Modifier
+                .fillMaxSize(),
+            horizontalAlignment = Alignment.CenterHorizontally,
+            verticalArrangement = Arrangement.Center,
+        ) {
+            Text(
+                text = "Weekly kilometers: %s"
+            )
+            Text(
+                text = "Monthly kilometers: %s"
+            )
+            Text(
+                text = "Sessions count: %s"
+            )
         }
     }
 }
@@ -70,5 +92,15 @@ private fun MainScreenStatisticsScene_DarkTheme() {
         darkTheme = true
     ) {
         MainScreenStatisticsScene(MockObjects.loadingState)
+    }
+}
+
+@Preview
+@Composable
+private fun MainScreenStatisticsScene_Error_DarkTheme() {
+    MyApplicationTheme(
+        darkTheme = true
+    ) {
+        MainScreenStatisticsScene(UiState(error = ErrorModel.Unknown))
     }
 }
