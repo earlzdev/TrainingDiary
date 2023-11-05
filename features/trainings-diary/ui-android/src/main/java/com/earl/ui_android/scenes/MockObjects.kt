@@ -25,11 +25,11 @@ internal object MockObjects {
     val successfulLoadedState = UiState(trainingSessionsList = trainingSessionsList)
     val trainingSession = TrainingSession(
         "test",
-        1L,
+        1699785100000L,
         "Title",
         "Running",
         10,
-        1L,
+        5700000L,
         "Test",
         154
     )

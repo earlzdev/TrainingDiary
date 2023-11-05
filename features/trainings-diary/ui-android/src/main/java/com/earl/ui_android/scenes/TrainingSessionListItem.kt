@@ -30,6 +30,8 @@ import com.earl.android_design_system.theme.MyApplicationTheme
 import com.earl.domain.api.models.TrainingSession
 import com.earl.ui_android.utils.IntExtensions.getAsDistanceInKm
 import com.earl.ui_android.utils.LongExtensions.getDateAsStringFromMillis
+import com.earl.ui_android.utils.LongExtensions.getDurationAsStringFromMillis
+import com.earl.ui_android.utils.LongExtensions.getTimeAsStringFromMillis
 import java.text.DateFormat.getDateTimeInstance
 import java.text.SimpleDateFormat
 import java.util.Calendar
@@ -56,9 +58,9 @@ fun TrainingSessionListItem(
                 horizontalArrangement = Arrangement.SpaceBetween,
                 verticalAlignment = Alignment.CenterVertically
             ) {
-                TrainingSessionTimeLabel()
+                TrainingSessionTimeLabel(session.dateTime)
                 Text(
-                    text = session.duration.toString(),
+                    text = session.duration.getDurationAsStringFromMillis(),
                     fontFamily = FontFamily(Font(com.earl.shared_resources.SharedResources.fonts.Montserrat.semibold.fontResourceId)),
                     fontSize = 15.sp
                 )
@@ -78,18 +80,18 @@ fun TrainingSessionListItem(
 
 @Composable
 private fun TrainingSessionTimeLabel(
-
+    sessionDate: Long
 ) {
     Row {
         Text(
-            text = "1 oct",
+            text = sessionDate.getDateAsStringFromMillis(),
             fontFamily = FontFamily(Font(com.earl.shared_resources.SharedResources.fonts.Montserrat.bold.fontResourceId)),
             fontSize = 14.sp
         )
         Text(
             modifier = Modifier
                 .padding(start = 10.dp),
-            text = "15:45",
+            text = sessionDate.getTimeAsStringFromMillis(),
             fontFamily = FontFamily(Font(com.earl.shared_resources.SharedResources.fonts.Montserrat.bold.fontResourceId)),
             fontSize = 14.sp
         )

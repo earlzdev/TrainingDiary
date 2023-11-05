@@ -1,7 +1,8 @@
 package com.earl.ui_android.utils
 
-import java.text.DateFormat.getDateTimeInstance
+import java.text.SimpleDateFormat
 import java.util.Calendar
+import java.util.Locale
 import java.util.concurrent.TimeUnit
 
 object LongExtensions {
@@ -9,8 +10,8 @@ object LongExtensions {
     fun Long.getTimeAsStringFromMillis(): String {
         val calendar: Calendar = Calendar.getInstance()
         calendar.timeInMillis = this
-        val formatter = getDateTimeInstance().format("hh:mm")
-        return formatter.format(calendar.time)
+        val sdf = SimpleDateFormat("hh:mm", Locale.US)
+        return sdf.format(calendar.time)
     }
 
     fun Long.getDateAsStringFromMillis(): String {
@@ -19,11 +20,11 @@ object LongExtensions {
         val trainingSessionYear = calendar.get(Calendar.YEAR)
         val currentYear = Calendar.getInstance().get(Calendar.YEAR)
         return if (trainingSessionYear == currentYear) {
-            val formatter = getDateTimeInstance().format("dd MM")
-            formatter.format(calendar.time)
+            val sdf = SimpleDateFormat("dd MMMM", Locale.US)
+            sdf.format(calendar.time)
         } else {
-            val formatter = getDateTimeInstance().format("dd MM yyyy")
-            formatter.format(calendar.time)
+            val sdf = SimpleDateFormat("dd MMM yyyy", Locale.US)
+            sdf.format(calendar.time)
         }
     }
 

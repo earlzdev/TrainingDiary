@@ -19,7 +19,6 @@ data class TrainingSessionResponse(
 data class TrainingFragmentResponse(
     val title: String,
     val description: String,
-    val pulse: PulseResponse,
     val type: String
 )
 
