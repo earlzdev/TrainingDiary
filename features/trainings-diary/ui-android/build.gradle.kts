@@ -14,6 +14,9 @@ android {
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles("consumer-rules.pro")
+        vectorDrawables {
+            useSupportLibrary = true
+        }
     }
 
     buildTypes {
@@ -38,14 +41,19 @@ android {
     kotlinOptions {
         jvmTarget = "1.8"
     }
+    packaging {
+        resources {
+            excludes += "/META-INF/{AL2.0,LGPL2.1}"
+        }
+    }
 }
 
 dependencies {
 
     implementation(project(":shared"))
+    implementation(project(":core:android-design-system"))
     implementation(project(mapOf("path" to ":features:trainings-diary:domain")))
     implementation(project(mapOf("path" to ":core:common")))
-    implementation(project(":core:android-design-system"))
     implementation(Dependencies.Libraries.mviCore)
     implementation(Dependencies.Libraries.mviLogging)
     implementation(Dependencies.Libraries.mviCoroutines)

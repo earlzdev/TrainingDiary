@@ -15,6 +15,9 @@ struct TrainingSessionListItemView: View {
     
     var body: some View {
         VStack {
+            Image(resource: \.ic_run_lt)
+                .resizable()
+                .aspectRatio(contentMode: .fit)
             Text("Trainig - \(trainingSession.title)")
             Text("Date - \(trainingSession.dateTime)")
             

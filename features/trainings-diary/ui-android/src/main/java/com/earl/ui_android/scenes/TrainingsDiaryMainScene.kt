@@ -24,7 +24,8 @@ fun TrainingsDiaryMainScene(
     ) {
         Column {
             MainScreenStatisticsScene(state.value)
-            TrainingSessionsListScene(state.value)
+//            TrainingSessionsListScene(state.value)
+            TrainingSessionsListScene(MockObjects.successfulLoadedState)
         }
     }
 }
