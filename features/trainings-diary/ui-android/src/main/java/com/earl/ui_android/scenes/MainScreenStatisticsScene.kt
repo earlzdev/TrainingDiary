@@ -18,6 +18,7 @@ import androidx.compose.ui.unit.dp
 import com.earl.common.ErrorModel
 import com.earl.android_design_system.theme.MyApplicationTheme
 import com.earl.ui_android.UiState
+import com.earl.ui_android.utils.MockObjects
 
 @Composable
 fun MainScreenStatisticsScene(

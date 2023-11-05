@@ -14,20 +14,17 @@ struct TrainingsDiaryView: View {
     @ObservedObject var viewModel: TrainingsDiaryViewModel = TrainingsDiaryViewModel()
     
     var body: some View {
-        Image(resource: \.ic_run_dt)
-            .resizable()
-            .aspectRatio(contentMode: .fit)
-//        TrainingDiaryContent(
-//            uiState: $viewModel.uiState,
-//            onAppear: {
-//                viewModel.loadTrainingSessions()
-//                viewModel.startObserving()
-//            },
-//            onDisappear: {
-//                viewModel.stopObserving()
-//
-//            }
-//        )
+        TrainingDiaryContent(
+            uiState: $viewModel.uiState,
+            onAppear: {
+                viewModel.loadTrainingSessions()
+                viewModel.startObserving()
+            },
+            onDisappear: {
+                viewModel.stopObserving()
+
+            }
+        )
     }
 }
 

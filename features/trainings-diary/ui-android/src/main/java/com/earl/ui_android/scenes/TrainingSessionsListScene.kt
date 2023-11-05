@@ -15,6 +15,7 @@ import com.earl.android_design_system.theme.MyApplicationTheme
 import com.earl.common.ErrorModel
 import com.earl.domain.api.models.TrainingSession
 import com.earl.ui_android.UiState
+import com.earl.ui_android.utils.MockObjects
 
 @Composable
 fun TrainingSessionsListScene(

@@ -2,8 +2,6 @@ package com.earl.ui_android.scenes
 
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.Image
-import androidx.compose.foundation.background
-import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -17,12 +15,10 @@ import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.ColorFilter
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.Font
 import androidx.compose.ui.text.font.FontFamily
-import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -32,9 +28,7 @@ import com.earl.ui_android.utils.IntExtensions.getAsDistanceInKm
 import com.earl.ui_android.utils.LongExtensions.getDateAsStringFromMillis
 import com.earl.ui_android.utils.LongExtensions.getDurationAsStringFromMillis
 import com.earl.ui_android.utils.LongExtensions.getTimeAsStringFromMillis
-import java.text.DateFormat.getDateTimeInstance
-import java.text.SimpleDateFormat
-import java.util.Calendar
+import com.earl.ui_android.utils.MockObjects
 
 @Composable
 fun TrainingSessionListItem(

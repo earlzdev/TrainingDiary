@@ -1,4 +1,4 @@
-package com.earl.ui_android.scenes
+package com.earl.ui_android.utils
 
 import com.earl.common.ErrorModel
 import com.earl.domain.api.models.TrainingSession
