@@ -21,8 +21,10 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
-import com.earl.api.Screen
 import com.earl.android_design_system.theme.MyApplicationTheme
+import com.earl.api.NavigationRoutes
+import com.earl.api.Screen
+import com.earl.ui_android.scenes.AddNewTrainingInfoScene
 import com.earl.ui_android.scenes.TrainingsDiaryMainScene
 
 class MainActivity : ComponentActivity() {
@@ -41,8 +43,8 @@ class MainActivity : ComponentActivity() {
 fun RootScene() {
     val navController = rememberNavController()
     val bottomTabScreens = listOf(
-        Screen.TrainingsDiary,
-        Screen.Profile
+        NavigationRoutes.TRAINING_DIARY,
+        NavigationRoutes.PROFILE
     )
     Scaffold(
         bottomBar = {
@@ -52,10 +54,10 @@ fun RootScene() {
                 bottomTabScreens.forEach { screen ->
                     BottomNavigationItem(
                         icon = { Icon(Icons.Filled.Favorite, contentDescription = null) },
-                        label = { Text(screen.title) },
-                        selected = currentDestination?.hierarchy?.any { it.route == screen.route } == true,
+                        label = { Text(screen) },
+                        selected = currentDestination?.hierarchy?.any { it.route == screen } == true,
                         onClick = {
-                            navController.navigate(screen.route) {
+                            navController.navigate(screen) {
                                 // Pop up to the start destination of the graph to
                                 // avoid building up a large stack of destinations
                                 // on the back stack as users select items
@@ -74,9 +76,20 @@ fun RootScene() {
             }
         }
     ) { innerPadding ->
-        NavHost(navController, startDestination = Screen.TrainingsDiary.route, Modifier.padding(innerPadding)) {
-            composable(Screen.TrainingsDiary.route) { TrainingsDiaryMainScene(navController) }
-            composable(Screen.Profile.route) { ProfileScreenStub() }
+        NavHost(navController, startDestination = NavigationRoutes.TRAINING_DIARY, Modifier.padding(innerPadding)) {
+
+            composable(NavigationRoutes.TRAINING_DIARY) {
+                val trainingsDiaryFeatureNavController = rememberNavController()
+                NavHost(
+                    navController = trainingsDiaryFeatureNavController,
+                    startDestination = Screen.TrainingsDiary.route
+                ) {
+                    composable(Screen.TrainingsDiary.route) { TrainingsDiaryMainScene(trainingsDiaryFeatureNavController) }
+                    composable(Screen.AddNewTrainingInfo.route) { AddNewTrainingInfoScene() }
+                }
+            }
+
+            composable(NavigationRoutes.PROFILE) { ProfileScreenStub() }
         }
     }
 }

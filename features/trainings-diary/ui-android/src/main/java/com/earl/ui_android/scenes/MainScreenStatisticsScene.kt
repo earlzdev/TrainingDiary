@@ -52,26 +52,38 @@ private fun StatisticsLoadingError() {
 
 @Composable
 private fun StatisticsCard() {
-    Card(
+    Column(
         modifier = Modifier
             .fillMaxWidth()
-            .height(200.dp)
     ) {
-        Column(
+        Text(
             modifier = Modifier
-                .fillMaxSize(),
-            horizontalAlignment = Alignment.CenterHorizontally,
-            verticalArrangement = Arrangement.Center,
+                .padding(top = 20.dp, start = 20.dp, bottom = 7.dp),
+            text = "Statistic block:"
+        )
+        Card(
+            modifier = Modifier
+                .fillMaxWidth()
+                .height(200.dp)
+                .padding(start = 20.dp, end = 20.dp, top = 10.dp),
+            shape = RoundedCornerShape(10.dp)
         ) {
-            Text(
-                text = "Weekly kilometers: %s"
-            )
-            Text(
-                text = "Monthly kilometers: %s"
-            )
-            Text(
-                text = "Sessions count: %s"
-            )
+            Column(
+                modifier = Modifier
+                    .fillMaxSize(),
+                horizontalAlignment = Alignment.CenterHorizontally,
+                verticalArrangement = Arrangement.Center,
+            ) {
+                Text(
+                    text = "Weekly kilometers: %s"
+                )
+                Text(
+                    text = "Monthly kilometers: %s"
+                )
+                Text(
+                    text = "Sessions count: %s"
+                )
+            }
         }
     }
 }

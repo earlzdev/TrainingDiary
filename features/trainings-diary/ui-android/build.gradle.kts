@@ -52,6 +52,7 @@ dependencies {
 
     implementation(project(":shared"))
     implementation(project(":core:android-design-system"))
+    implementation(project(":navigation:api"))
     implementation(project(mapOf("path" to ":features:trainings-diary:domain")))
     implementation(project(mapOf("path" to ":core:common")))
     implementation(Dependencies.Libraries.mviCore)

@@ -2,12 +2,14 @@ package com.earl.ui_android.scenes
 
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.selection.selectable
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.Card
 import androidx.compose.material.MaterialTheme
@@ -32,12 +34,16 @@ import com.earl.ui_android.utils.MockObjects
 
 @Composable
 fun TrainingSessionListItem(
-    session: TrainingSession
+    session: TrainingSession,
+    onTrainingClick: (TrainingSession) -> Unit
 ) {
     Card (
         modifier = Modifier
             .fillMaxWidth()
-            .padding(8.dp),
+            .padding(8.dp)
+            .clickable {
+                onTrainingClick(session)
+            },
         elevation = 4.dp,
         shape = RoundedCornerShape(10.dp), 
         border = BorderStroke(2.dp, MaterialTheme.colors.onSurface)
@@ -161,7 +167,7 @@ private fun TrainingShortInfoLabel(
 @Composable
 fun TrainingSessionListItem_LightTheme() {
     MyApplicationTheme(darkTheme = false) {
-        TrainingSessionListItem(MockObjects.trainingSession)
+        TrainingSessionListItem(MockObjects.trainingSession, {})
     }
 }
 
@@ -169,6 +175,6 @@ fun TrainingSessionListItem_LightTheme() {
 @Composable
 fun TrainingSessionListItem_DarkTheme() {
     MyApplicationTheme(darkTheme = true) {
-        TrainingSessionListItem(MockObjects.trainingSession)
+        TrainingSessionListItem(MockObjects.trainingSession, {})
     }
 }
