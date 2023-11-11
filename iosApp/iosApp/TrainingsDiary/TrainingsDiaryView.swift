@@ -22,7 +22,7 @@ struct TrainingsDiaryView: View {
             },
             onDisappear: {
                 viewModel.stopObserving()
-                
+
             }
         )
     }

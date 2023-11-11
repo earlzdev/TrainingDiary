@@ -17,7 +17,9 @@ class TrainingsDiaryRepositoryImpl(
                 it.title,
                 it.type,
                 it.distance,
-                it.description
+                it.duration,
+                it.description,
+                it.pulse?.average ?: -1
             )
         }
     }
@@ -32,7 +34,9 @@ class TrainingsDiaryRepositoryImpl(
                         it.title,
                         it.type,
                         it.distance,
-                        it.description
+                        it.duration,
+                        it.description,
+                        it.pulse?.average ?: -1
                     )
                 })
             }

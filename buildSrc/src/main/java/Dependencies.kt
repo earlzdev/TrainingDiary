@@ -15,7 +15,8 @@ object Dependencies {
     private const val composeFoundation = "1.4.3"
     private const val composeMaterialDesign = "1.4.3"
     private const val activityCompose = "1.7.1"
-    private const val navigationCompose = "2.7.3"
+    private const val navigationCompose = "2.6.0"
+    private const val navigationComposeLifecycle = "2.6.2"
 
     /** Ktor */
     private const val ktorVersion = "2.3.4"
@@ -63,6 +64,8 @@ object Dependencies {
 
         /** Jetpack Compose */
         const val jetpackComposeNavigation = "androidx.navigation:navigation-compose:$navigationCompose"
+        const val jetpackComposeLifecycleNavigation = "androidx.lifecycle:lifecycle-runtime-compose:$navigationComposeLifecycle"
+
 
         /** Serialization */
         const val kotlinXSerializationCore = "org.jetbrains.kotlinx:kotlinx-serialization-core:$kotlinXSerializationVersion"
@@ -100,7 +103,8 @@ object Dependencies {
                 add(ktorClientAndroid)
                 add(koinAndroid)
                 add(koinJetpackCompose)
-//                add(jetpackComposeNavigation) fixme change version for compile sdk 33
+                add(jetpackComposeNavigation) // fixme change version for compile sdk 33
+                add(jetpackComposeLifecycleNavigation) // fixme change version for compile sdk 33
             }
 
             fun DependencyHandlerScope.androidAppDependencies() {
