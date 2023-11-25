@@ -1,9 +1,8 @@
 package com.earl.android_design_system.theme
 
-    import androidx.compose.foundation.isSystemInDarkTheme
+import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.foundation.shape.RoundedCornerShape
-    import androidx.compose.material.Colors
-    import androidx.compose.material.MaterialTheme
+import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Shapes
 import androidx.compose.material.Typography
 import androidx.compose.material.darkColors

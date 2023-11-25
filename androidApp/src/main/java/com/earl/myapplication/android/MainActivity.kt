@@ -10,11 +10,15 @@ import androidx.compose.material.BottomNavigationItem
 import androidx.compose.material.Icon
 import androidx.compose.material.Scaffold
 import androidx.compose.material.Text
+import androidx.compose.material.TopAppBar
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Favorite
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.navigation.NavDestination.Companion.hierarchy
 import androidx.navigation.compose.NavHost
@@ -23,6 +27,8 @@ import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
 import com.earl.android_design_system.theme.MyApplicationTheme
 import com.earl.api.NavigationRoutes
+import com.earl.api.NavigationRoutes.PROFILE
+import com.earl.api.NavigationRoutes.TRAINING_DIARY
 import com.earl.api.Screen
 import com.earl.ui_android.scenes.AddNewTrainingInfoScene
 import com.earl.ui_android.scenes.TrainingsDiaryMainScene
@@ -32,53 +38,66 @@ class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
-            MyApplicationTheme {
+            MyApplicationTheme(
+                darkTheme = false
+            ) {
                 RootScene()
             }
         }
     }
 }
 
+// todo: move to navigation module
 @Composable
 fun RootScene() {
     val navController = rememberNavController()
     val bottomTabScreens = listOf(
-        NavigationRoutes.TRAINING_DIARY,
-        NavigationRoutes.PROFILE
+        TRAINING_DIARY,
+        PROFILE
     )
     Scaffold(
+        topBar = {
+            TopAppBar(
+                backgroundColor = Color(com.earl.shared_resources.SharedResources.colors.primary.getColor(
+                    LocalContext.current)),
+                title = {
+                    Text("Trainings Diary")
+                }
+            )
+        },
         bottomBar = {
-            BottomNavigation {
+            BottomNavigation(
+                backgroundColor = Color(com.earl.shared_resources.SharedResources.colors.bottom_navbar_bg.getColor(
+                    LocalContext.current))
+            ) {
                 val navBackStackEntry by navController.currentBackStackEntryAsState()
                 val currentDestination = navBackStackEntry?.destination
                 bottomTabScreens.forEach { screen ->
                     BottomNavigationItem(
-                        icon = { Icon(Icons.Filled.Favorite, contentDescription = null) },
+                        icon = { Icon(painter = painterResource(id = getBottomNavTabIconForScreen(screen)), contentDescription = null) },
                         label = { Text(screen) },
                         selected = currentDestination?.hierarchy?.any { it.route == screen } == true,
                         onClick = {
                             navController.navigate(screen) {
-                                // Pop up to the start destination of the graph to
-                                // avoid building up a large stack of destinations
-                                // on the back stack as users select items
                                 popUpTo(navController.graph.startDestinationId) {
                                     saveState = true
                                 }
-                                // Avoid multiple copies of the same destination when
-                                // reselecting the same item
                                 launchSingleTop = true
-                                // Restore state when reselecting a previously selected item
                                 restoreState = true
                             }
-                        }
+                        },
+                        selectedContentColor = Color(com.earl.shared_resources.SharedResources.colors.primary.getColor(
+                            LocalContext.current)),
+                        unselectedContentColor = Color(com.earl.shared_resources.SharedResources.colors.bottom_navbar_bg_unselected_item_color.getColor(
+                            LocalContext.current))
                     )
                 }
             }
         }
     ) { innerPadding ->
-        NavHost(navController, startDestination = NavigationRoutes.TRAINING_DIARY, Modifier.padding(innerPadding)) {
+        NavHost(navController, startDestination = TRAINING_DIARY, Modifier.padding(innerPadding)) {
 
-            composable(NavigationRoutes.TRAINING_DIARY) {
+            composable(TRAINING_DIARY) {
                 val trainingsDiaryFeatureNavController = rememberNavController()
                 NavHost(
                     navController = trainingsDiaryFeatureNavController,
@@ -89,9 +108,15 @@ fun RootScene() {
                 }
             }
 
-            composable(NavigationRoutes.PROFILE) { ProfileScreenStub() }
+            composable(PROFILE) { ProfileScreenStub() }
         }
     }
+}
+
+private fun getBottomNavTabIconForScreen(screenName: String): Int = when(screenName) {
+    TRAINING_DIARY -> com.earl.shared_resources.SharedResources.images.ic_diary_bottomnavbar.drawableResId
+    PROFILE -> com.earl.shared_resources.SharedResources.images.ic_profile_bottomnavbar.drawableResId
+    else -> throw IllegalStateException("Can not get icon for screen $screenName")
 }
 
 @Preview

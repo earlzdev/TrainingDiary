@@ -17,7 +17,7 @@ struct TrainingSessionListItemView: View {
         ZStack {
             Rectangle()
                 .foregroundColor(.clear)
-                .frame(width: 352, height: 75)
+                .frame(width: .infinity, height: 75)
                 .background(Color.BackgroundColor)
                 .cornerRadius(8)
                 .shadow(color: .black.opacity(0.25), radius: 2, x: 0, y: 4)
@@ -40,6 +40,8 @@ struct TrainingSessionListItemView: View {
                                                 Font(SharedResources.fontsMontserrat().bold.uiFont(withSize: 16))
                                             )
                                         defineAndGetTrainingSessionImage()
+                                            .renderingMode(.template)
+                                            .foregroundColor(Color.OnBackgroundColor)
                                     }
                                     Spacer()
                                 }
@@ -62,6 +64,8 @@ struct TrainingSessionListItemView: View {
                                                 Font(SharedResources.fontsMontserrat().semibold.uiFont(withSize: 15))
                                             )
                                         Image(resource: \.ic_heart_rate)
+                                            .renderingMode(.template)
+                                            .foregroundColor(Color.OnBackgroundColor)
                                     }
                                     Spacer()
                                 }
