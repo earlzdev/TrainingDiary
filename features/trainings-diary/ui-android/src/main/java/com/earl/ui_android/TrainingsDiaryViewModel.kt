@@ -28,7 +28,6 @@ class TrainingsDiaryViewModel(
             store.states.map(stateMapper::map) bindTo (::acceptState)
         }
         binder.start()
-
         loadTrainingSessions()
     }
 

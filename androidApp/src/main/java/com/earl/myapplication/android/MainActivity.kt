@@ -11,8 +11,6 @@ import androidx.compose.material.Icon
 import androidx.compose.material.Scaffold
 import androidx.compose.material.Text
 import androidx.compose.material.TopAppBar
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Favorite
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
@@ -26,12 +24,11 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
 import com.earl.android_design_system.theme.MyApplicationTheme
-import com.earl.api.NavigationRoutes
 import com.earl.api.NavigationRoutes.PROFILE
 import com.earl.api.NavigationRoutes.TRAINING_DIARY
 import com.earl.api.Screen
 import com.earl.ui_android.scenes.AddNewTrainingInfoScene
-import com.earl.ui_android.scenes.TrainingsDiaryMainScene
+import com.earl.ui_android.scenes.TrainingsDiaryRootScene
 
 class MainActivity : ComponentActivity() {
 
@@ -103,7 +100,7 @@ fun RootScene() {
                     navController = trainingsDiaryFeatureNavController,
                     startDestination = Screen.TrainingsDiary.route
                 ) {
-                    composable(Screen.TrainingsDiary.route) { TrainingsDiaryMainScene(trainingsDiaryFeatureNavController) }
+                    composable(Screen.TrainingsDiary.route) { TrainingsDiaryRootScene(trainingsDiaryFeatureNavController) }
                     composable(Screen.AddNewTrainingInfo.route) { AddNewTrainingInfoScene() }
                 }
             }
