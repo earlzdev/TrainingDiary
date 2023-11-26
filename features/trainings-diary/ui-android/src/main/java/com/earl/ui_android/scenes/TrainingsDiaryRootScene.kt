@@ -9,8 +9,8 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
 import com.earl.android_design_system.theme.MyApplicationTheme
-import com.earl.api.Screen
 import com.earl.common.ErrorModel
+import com.earl.api.Screen
 import com.earl.ui_android.TrainingsDiaryViewModel
 import com.earl.ui_android.successfullyLoaded
 import org.koin.androidx.compose.koinViewModel
