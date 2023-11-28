@@ -22,15 +22,10 @@ fun TrainingsDiaryContentScene(
                 QuickStatsBlock()
             }
             item {
-                TrainingsListHeader(
-                    onAddNewTrainingIconClick = onAddNewTrainingIconClick
-                )
+                TrainingsListHeader(onAddNewTrainingIconClick = onAddNewTrainingIconClick)
             }
-            items(content.trainingsList.trainings) {
-                TrainingSessionListItem(
-                    session = it,
-                    onTrainingClick = onTrainingClick
-                )
+            items(content.trainingsList.trainings) { session: TrainingSession ->
+                TrainingSessionListItem(session = session, onTrainingClick = onTrainingClick)
             }
         }
     }

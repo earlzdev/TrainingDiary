@@ -26,6 +26,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.earl.android_design_system.theme.MyApplicationTheme
 import com.earl.api.models.TrainingSession
+import com.earl.shared_resources.SharedResources
 import com.earl.ui_android.utils.IntExtensions.getAsDistanceInKm
 import com.earl.ui_android.utils.LongExtensions.getDateAsStringFromMillis
 import com.earl.ui_android.utils.LongExtensions.getDurationAsStringFromMillis
@@ -50,9 +51,8 @@ fun TrainingSessionListItem(
         Row(
             modifier = Modifier
                 .background(
-                    Color(
-                        com.earl.shared_resources.SharedResources.colors.cardBgColor.getColor(LocalContext.current)
-                    ).copy(alpha = 0.7f)
+                    Color(SharedResources.colors.cardBgColor.getColor(LocalContext.current))
+                        .copy(alpha = 0.7f)
                 )
                 .padding(vertical = 12.dp),
             verticalAlignment = Alignment.CenterVertically,
@@ -77,14 +77,14 @@ private fun TrainingSessionTimeLabel(
     Row {
         Text(
             text = sessionDate.getDateAsStringFromMillis(),
-            fontFamily = FontFamily(Font(com.earl.shared_resources.SharedResources.fonts.Montserrat.semibold.fontResourceId)),
+            fontFamily = FontFamily(Font(SharedResources.fonts.Montserrat.semibold.fontResourceId)),
             fontSize = 14.sp
         )
         Text(
             modifier = Modifier
                 .padding(start = 10.dp),
             text = sessionDate.getTimeAsStringFromMillis(),
-            fontFamily = FontFamily(Font(com.earl.shared_resources.SharedResources.fonts.Montserrat.semibold.fontResourceId)),
+            fontFamily = FontFamily(Font(SharedResources.fonts.Montserrat.semibold.fontResourceId)),
             fontSize = 14.sp
         )
     }
@@ -101,7 +101,7 @@ private fun TrainingTypeLabel(
     ) {
         Text(
             text = sessionType,
-            fontFamily = FontFamily(Font(com.earl.shared_resources.SharedResources.fonts.Montserrat.bold.fontResourceId)),
+            fontFamily = FontFamily(Font(SharedResources.fonts.Montserrat.bold.fontResourceId)),
             fontSize = 18.sp
         )
     }
@@ -122,11 +122,11 @@ private fun TrainingShortInfoLabel(
             label = session.distance.getAsDistanceInKm()
         )
         TrainingShortInfoBlock(
-            iconId = com.earl.shared_resources.SharedResources.images.ic_round_heart_rate.drawableResId,
+            iconId = SharedResources.images.ic_round_heart_rate.drawableResId,
             label = session.pulse.toString()
         )
         TrainingShortInfoBlock(
-            iconId = com.earl.shared_resources.SharedResources.images.ic_round_timer.drawableResId,
+            iconId = SharedResources.images.ic_round_timer.drawableResId,
             label = session.duration.getDurationAsStringFromMillis()
         )
     }
@@ -153,7 +153,7 @@ private fun TrainingShortInfoBlock(
             modifier = Modifier
                 .padding(top = 5.dp),
             text = label,
-            fontFamily = FontFamily(Font(com.earl.shared_resources.SharedResources.fonts.Montserrat.medium.fontResourceId)),
+            fontFamily = FontFamily(Font(SharedResources.fonts.Montserrat.medium.fontResourceId)),
         )
     }
 }
@@ -161,9 +161,9 @@ private fun TrainingShortInfoBlock(
 private fun getIconForTraining(
     sessionType: String
 ): Int = when(sessionType) {
-    "Running" -> com.earl.shared_resources.SharedResources.images.ic_round_run.drawableResId
-    "Swimming" -> com.earl.shared_resources.SharedResources.images.ic_round_swim.drawableResId
-    "Gym" -> com.earl.shared_resources.SharedResources.images.ic_round_gym.drawableResId
+    "Running" -> SharedResources.images.ic_round_run.drawableResId
+    "Swimming" -> SharedResources.images.ic_round_swim.drawableResId
+    "Gym" -> SharedResources.images.ic_round_gym.drawableResId
     else -> throw IllegalStateException("No such training type! $sessionType")
 }
 

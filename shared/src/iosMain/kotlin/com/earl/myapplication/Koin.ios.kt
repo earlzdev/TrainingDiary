@@ -1,6 +1,6 @@
 package com.earl.myapplication
 
-import com.earl.common.BaseMapper
+import com.earl.common.mappers.BaseMapper
 import com.earl.data.TrainingsDiaryRepositoryImpl
 import com.earl.domain.api.TrainingsDiaryStatePublisher
 import com.earl.domain.api.TrainingsDiaryRepository

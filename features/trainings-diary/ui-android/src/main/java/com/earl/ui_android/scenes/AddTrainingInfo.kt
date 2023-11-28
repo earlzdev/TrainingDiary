@@ -41,8 +41,9 @@ import com.earl.ui_android.utils.getFont
 
 @Composable
 fun AddNewTrainingInfoScene() {
+    val context = LocalContext.current
     var titleText by rememberSaveable {
-        mutableStateOf("Morning easy run..")
+        mutableStateOf(SharedResources.strings.training_title_hint.getString(context))
     }
     var descriptionText by remember {
         mutableStateOf("")

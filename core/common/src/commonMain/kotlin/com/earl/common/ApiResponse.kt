@@ -1,10 +1,15 @@
 package com.earl.common
 
-sealed class ApiResponse<out T> {
+sealed class ApiResponse<out T, out E> {
 
-    object Loading: ApiResponse<Nothing>()
+    data class Success<T>(val body: T) : ApiResponse<T, Nothing>()
 
-    data class Success<out T>(val data: T): ApiResponse<T>()
+    sealed class Error<E> : ApiResponse<Nothing, E>() {
 
-    data class Failure(val errorMessage: ErrorModel): ApiResponse<Nothing>()
+        data class HttpError<E>(val code: Int, val errorBody: E?) : Error<E>()
+
+        object NetworkError : Error<Nothing>()
+
+        object SerializationError : Error<Nothing>()
+    }
 }

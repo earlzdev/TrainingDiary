@@ -1,6 +1,6 @@
 package com.earl.myapplication.uiStates.trainingsDiary
 
-import com.earl.common.BaseMapper
+import com.earl.common.mappers.BaseMapper
 import com.earl.domain.api.TrainingsDiaryStatePublisher
 import com.earl.domain.api.TrainingsDiaryStore
 import com.earl.myapplication.uiStates.BaseUiStatePublisheriOS

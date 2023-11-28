@@ -1,7 +1,7 @@
 package com.earl.ui_android.utils
 
+import com.earl.api.models.ErrorModel
 import com.earl.api.models.TrainingSession
-import com.earl.common.ErrorModel
 import com.earl.ui_android.LoadedTrainingSessionContent
 import com.earl.ui_android.UiState
 
@@ -22,7 +22,7 @@ internal object MockObjects {
     )
 
     val loadingState = UiState(isLoading = true)
-    val errorState = UiState(error = ErrorModel.NetworkError(404, "Not found"))
+    val errorState = UiState(error = ErrorModel())
     val successfulLoadedState = UiState(LoadedTrainingSessionContent())
     val trainingSession = TrainingSession(
         "test",

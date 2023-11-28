@@ -45,7 +45,7 @@ fun QuickStatsBlockHeader() {
     Text(
         modifier = Modifier
             .padding(start = 12.dp, top = 15.dp),
-        text = "Quick stats:",
+        text = SharedResources.strings.quick_stats.getString(LocalContext.current),
         fontFamily = FontFamily(Font(SharedResources.fonts.Montserrat.bold.fontResourceId)),
         fontSize = 20.sp
     )
@@ -109,9 +109,9 @@ fun StatisticsFields() {
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.SpaceAround,
     ) {
-        StatisticsRow(field = "Running", value = "34 km")
-        StatisticsRow(field = "Swimming", value = "12 km")
-        StatisticsRow(field = "Gym", value = "2h 35min")
+        StatisticsRow(field = SharedResources.strings.running.getString(LocalContext.current), value = "34 km")
+        StatisticsRow(field = SharedResources.strings.swimming.getString(LocalContext.current), value = "12 km")
+        StatisticsRow(field = SharedResources.strings.gym.getString(LocalContext.current), value = "2h 35min")
     }
 }
 

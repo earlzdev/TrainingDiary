@@ -1,4 +1,4 @@
-package com.earl.common
+package com.earl.common.mappers
 
 interface BaseMapper<T, V> {
 

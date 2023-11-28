@@ -1,7 +1,7 @@
 package com.earl.ui_android.di
 
 import com.earl.api.TrainingsDiaryStore
-import com.earl.common.BaseMapper
+import com.earl.common.mappers.BaseMapper
 import com.earl.ui_android.utils.TrainingsDiaryStateUiMapper
 import com.earl.ui_android.TrainingsDiaryViewModel
 import com.earl.ui_android.UiState

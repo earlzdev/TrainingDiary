@@ -9,10 +9,8 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
 import com.earl.android_design_system.theme.MyApplicationTheme
-import com.earl.common.ErrorModel
 import com.earl.api.Screen
 import com.earl.ui_android.TrainingsDiaryViewModel
-import com.earl.ui_android.successfullyLoaded
 import org.koin.androidx.compose.koinViewModel
 
 @Composable
@@ -27,8 +25,8 @@ fun TrainingsDiaryRootScene(
     ) {
         when {
             uiState.value.isLoading -> LoadingContentScene()
-            uiState.value.error != ErrorModel.None -> {}
-            uiState.value.content.successfullyLoaded() -> TrainingsDiaryContentScene(
+            uiState.value.errorOccurred() -> TrainingDiaryLoadedFailed(error = uiState.value.error!!)
+            uiState.value.successfullyLoaded() -> TrainingsDiaryContentScene(
                 content = uiState.value.content,
                 onTrainingClick = {},
                 onAddNewTrainingIconClick = { navController.navigate(Screen.AddNewTrainingInfo.route) }

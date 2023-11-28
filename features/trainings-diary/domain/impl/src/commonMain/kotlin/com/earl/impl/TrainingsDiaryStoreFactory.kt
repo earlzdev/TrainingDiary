@@ -5,7 +5,8 @@ import com.arkivanov.mvikotlin.core.store.StoreFactory
 import com.earl.api.TrainingsDiaryRepository
 import com.earl.api.TrainingsDiaryStore
 import com.earl.api.models.TrainingSession
-import com.earl.common.ErrorModel
+import com.earl.common.ApiResponse
+import com.earl.common.ErrorResponse
 
 class TrainingsDiaryStoreFactory(
     private val storeFactory: StoreFactory,
@@ -28,6 +29,8 @@ class TrainingsDiaryStoreFactory(
 
         object SetLoading: Message
         data class SetTrainingsSessionsList(val list: List<TrainingSession>): Message
-        data class SetError(val errorModel: ErrorModel): Message
+        data class SetHttpError(val error: ApiResponse.Error.HttpError<ErrorResponse>): Message
+        object SetNetworkError: Message
+        object SetSerializationError: Message
     }
 }

@@ -3,7 +3,7 @@ package com.earl.ui_android.utils
 import com.earl.api.TrainingsDiaryStore
 import com.earl.api.models.StatisticsInfoBlock
 import com.earl.api.models.TrainingSessionsBlock
-import com.earl.common.BaseMapper
+import com.earl.common.mappers.BaseMapper
 import com.earl.ui_android.LoadedTrainingSessionContent
 import com.earl.ui_android.UiState
 
@@ -16,7 +16,7 @@ class TrainingsDiaryStateUiMapper: BaseMapper<TrainingsDiaryStore.State, UiState
                 trainingsList = TrainingSessionsBlock(from.trainingSessions)
             ),
             from.isLoading,
-            from.errorModel
+            from.error
         )
     }
 }
