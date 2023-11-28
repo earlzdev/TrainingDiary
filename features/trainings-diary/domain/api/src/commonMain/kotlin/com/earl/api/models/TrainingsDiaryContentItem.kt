@@ -1,3 +1,3 @@
-package com.earl.domain.api.models
+package com.earl.api.models
 
 abstract class TrainingsDiaryContentItem

@@ -1,7 +1,7 @@
 package com.earl.ui_android.utils
 
+import com.earl.api.models.TrainingSession
 import com.earl.common.ErrorModel
-import com.earl.domain.api.models.TrainingSession
 import com.earl.ui_android.LoadedTrainingSessionContent
 import com.earl.ui_android.UiState
 

@@ -1,9 +1,9 @@
 package com.earl.data
 
 import com.earl.api.TrainingsDiaryNetworkApi
+import com.earl.api.TrainingsDiaryRepository
+import com.earl.api.models.TrainingSession
 import com.earl.common.ApiResponse
-import com.earl.domain.api.TrainingsDiaryRepository
-import com.earl.domain.api.models.TrainingSession
 
 class TrainingsDiaryRepositoryImpl(
     private val networkApi: TrainingsDiaryNetworkApi

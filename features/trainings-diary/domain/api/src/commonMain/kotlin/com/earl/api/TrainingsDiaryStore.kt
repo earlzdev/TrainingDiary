@@ -1,8 +1,8 @@
-package com.earl.domain.api
+package com.earl.api
 
 import com.arkivanov.mvikotlin.core.store.Store
+import com.earl.api.models.TrainingSession
 import com.earl.common.ErrorModel
-import com.earl.domain.api.models.TrainingSession
 
 interface TrainingsDiaryStore: Store<TrainingsDiaryStore.Intent, TrainingsDiaryStore.State, TrainingsDiaryStore.Label> {
 

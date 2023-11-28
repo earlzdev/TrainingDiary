@@ -1,8 +1,8 @@
-package com.earl.domain.implementation
+package com.earl.impl
 
 import com.arkivanov.mvikotlin.extensions.coroutines.states
-import com.earl.domain.api.TrainingsDiaryStore
-import com.earl.domain.api.TrainingsDiaryStatePublisher
+import com.earl.api.TrainingsDiaryStatePublisher
+import com.earl.api.TrainingsDiaryStore
 import kotlinx.coroutines.flow.Flow
 
 class TrainingsDiaryStatePublisherImpl(

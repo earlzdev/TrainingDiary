@@ -1,9 +1,9 @@
-package com.earl.domain.implementation
+package com.earl.impl
 
 import com.arkivanov.mvikotlin.extensions.coroutines.CoroutineExecutor
+import com.earl.api.TrainingsDiaryRepository
+import com.earl.api.TrainingsDiaryStore
 import com.earl.common.ApiResponse
-import com.earl.domain.api.TrainingsDiaryRepository
-import com.earl.domain.api.TrainingsDiaryStore
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlin.coroutines.CoroutineContext

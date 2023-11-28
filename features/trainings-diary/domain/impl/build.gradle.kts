@@ -21,7 +21,7 @@ kotlin {
         iosSimulatorArm64()
     ).forEach {
         it.binaries.framework {
-            baseName = "data"
+            baseName = "impl"
         }
     }
 
@@ -30,8 +30,11 @@ kotlin {
             dependencies {
                 implementation(project(mapOf("path" to ":core:common")))
                 implementation(project(mapOf("path" to ":features:trainings-diary:domain:api")))
-                implementation(project(mapOf("path" to ":data:networking:trainings-diary-api:api")))
                 implementation(Dependencies.Libraries.coroutines)
+                implementation(Dependencies.Libraries.mviCore)
+                implementation(Dependencies.Libraries.mviLogging)
+                implementation(Dependencies.Libraries.mviCoroutines)
+                implementation(Dependencies.Libraries.mviMain)
             }
         }
         val commonTest by getting {
@@ -43,7 +46,7 @@ kotlin {
 }
 
 android {
-    namespace = "com.earl.data"
+    namespace = "com.earl.impl"
     compileSdk = Dependencies.AndroidAppConfiguration.compileSdk
     defaultConfig {
         minSdk = Dependencies.AndroidAppConfiguration.minSdk

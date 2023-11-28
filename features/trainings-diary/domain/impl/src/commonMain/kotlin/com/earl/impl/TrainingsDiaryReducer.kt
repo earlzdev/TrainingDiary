@@ -1,8 +1,8 @@
-package com.earl.domain.implementation
+package com.earl.impl
 
 import com.arkivanov.mvikotlin.core.store.Reducer
+import com.earl.api.TrainingsDiaryStore
 import com.earl.common.ErrorModel
-import com.earl.domain.api.TrainingsDiaryStore
 
 internal class TrainingsDiaryReducer : Reducer<TrainingsDiaryStore.State, TrainingsDiaryStoreFactory.Message> {
 

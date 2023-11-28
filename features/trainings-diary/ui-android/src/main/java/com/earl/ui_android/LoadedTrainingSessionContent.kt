@@ -1,8 +1,7 @@
 package com.earl.ui_android
 
-import com.earl.domain.api.models.StatisticsInfoBlock
-import com.earl.domain.api.models.TrainingSessionsBlock
-import com.earl.domain.api.models.TrainingsDiaryContentItem
+import com.earl.api.models.StatisticsInfoBlock
+import com.earl.api.models.TrainingSessionsBlock
 
 data class LoadedTrainingSessionContent(
     val statistics: StatisticsInfoBlock? = StatisticsInfoBlock(),

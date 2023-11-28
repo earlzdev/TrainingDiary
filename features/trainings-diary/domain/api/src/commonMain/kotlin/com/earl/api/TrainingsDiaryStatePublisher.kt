@@ -1,4 +1,4 @@
-package com.earl.domain.api
+package com.earl.api
 
 import kotlinx.coroutines.flow.Flow
 

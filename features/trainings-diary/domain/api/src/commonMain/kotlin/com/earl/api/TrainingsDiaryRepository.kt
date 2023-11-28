@@ -1,7 +1,7 @@
-package com.earl.domain.api
+package com.earl.api
 
+import com.earl.api.models.TrainingSession
 import com.earl.common.ApiResponse
-import com.earl.domain.api.models.TrainingSession
 
 interface TrainingsDiaryRepository {
 

@@ -21,7 +21,7 @@ kotlin {
         iosSimulatorArm64()
     ).forEach {
         it.binaries.framework {
-            baseName = "domain"
+            baseName = "api"
         }
     }
 
@@ -45,7 +45,7 @@ kotlin {
 }
 
 android {
-    namespace = "com.earl.domain"
+    namespace = "com.earl.api"
     compileSdk = Dependencies.AndroidAppConfiguration.compileSdk
     defaultConfig {
         minSdk = Dependencies.AndroidAppConfiguration.minSdk

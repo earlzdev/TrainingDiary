@@ -1,9 +1,9 @@
 package com.earl.ui_android.utils
 
+import com.earl.api.TrainingsDiaryStore
+import com.earl.api.models.StatisticsInfoBlock
+import com.earl.api.models.TrainingSessionsBlock
 import com.earl.common.BaseMapper
-import com.earl.domain.api.TrainingsDiaryStore
-import com.earl.domain.api.models.StatisticsInfoBlock
-import com.earl.domain.api.models.TrainingSessionsBlock
 import com.earl.ui_android.LoadedTrainingSessionContent
 import com.earl.ui_android.UiState
 

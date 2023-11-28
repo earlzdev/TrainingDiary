@@ -1,4 +1,4 @@
-package com.earl.domain.api.models
+package com.earl.api.models
 
 data class StatisticsInfoBlock(
     val weekly: WeeklyStats? = WeeklyStats()

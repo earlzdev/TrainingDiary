@@ -4,8 +4,8 @@ import androidx.lifecycle.ViewModel
 import com.arkivanov.mvikotlin.core.binder.Binder
 import com.arkivanov.mvikotlin.extensions.coroutines.bind
 import com.arkivanov.mvikotlin.extensions.coroutines.states
+import com.earl.api.TrainingsDiaryStore
 import com.earl.common.BaseMapper
-import com.earl.domain.api.TrainingsDiaryStore
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow

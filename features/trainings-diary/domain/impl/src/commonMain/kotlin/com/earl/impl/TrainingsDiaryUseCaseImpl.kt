@@ -1,8 +1,8 @@
-package com.earl.domain.implementation
+package com.earl.impl
 
-import com.earl.domain.api.TrainingsDiaryRepository
-import com.earl.domain.api.TrainingsDiaryUseCase
-import com.earl.domain.api.models.TrainingSession
+import com.earl.api.TrainingsDiaryRepository
+import com.earl.api.TrainingsDiaryUseCase
+import com.earl.api.models.TrainingSession
 
 class TrainingsDiaryUseCaseImpl(
     private val repository: TrainingsDiaryRepository,
