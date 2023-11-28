@@ -26,6 +26,7 @@ class TrainingSessionsRemoteToApiResponseMapper:
             is ApiResponse.Error.HttpError -> ApiResponse.Error.HttpError(from.code, from.errorBody)
             is ApiResponse.Error.NetworkError -> ApiResponse.Error.NetworkError
             is ApiResponse.Error.SerializationError -> ApiResponse.Error.SerializationError
+            is ApiResponse.Error.TimeoutError -> ApiResponse.Error.TimeoutError
         }
     }
 }

@@ -30,7 +30,6 @@ internal class TrainingsDiaryReducer : Reducer<TrainingsDiaryStore.State, Traini
         )
         is TrainingsDiaryStoreFactory.Message.SetSerializationError -> copy(
             isLoading = false,
-            trainingSessions = emptyList(),
             error = ErrorModel(msg = "Serialization exception")
         )
     }

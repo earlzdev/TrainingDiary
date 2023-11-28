@@ -4,7 +4,6 @@ import com.earl.api.TrainingsDiaryRepository
 import com.earl.api.TrainingsDiaryStore
 import com.earl.common.ApiResponse
 import com.earl.common.BaseExecutor
-import com.earl.common.ErrorResponse
 
 internal class MainExecutor(
     private val repository: TrainingsDiaryRepository,
@@ -26,13 +25,13 @@ internal class MainExecutor(
                 )
             )
             is ApiResponse.Error.HttpError -> {
-                TrainingsDiaryStoreFactory.Message.SetHttpError(response)
+                dispatch(TrainingsDiaryStoreFactory.Message.SetHttpError(response))
             }
             is ApiResponse.Error.NetworkError -> {
-                TrainingsDiaryStoreFactory.Message.SetNetworkError
+                dispatch(TrainingsDiaryStoreFactory.Message.SetNetworkError)
             }
             is ApiResponse.Error.SerializationError -> {
-                TrainingsDiaryStoreFactory.Message.SetSerializationError
+                dispatch(TrainingsDiaryStoreFactory.Message.SetSerializationError)
             }
             else -> throw IllegalStateException("No such response type")
         }
