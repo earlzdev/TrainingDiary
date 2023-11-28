@@ -19,19 +19,14 @@ suspend inline fun <reified T, reified E> HttpClient.safeRequest(
         val response = request { block() }
         ApiResponse.Success(response.body())
     } catch (e: ClientRequestException) {
-        android.util.Log.d("TAG1", "safeRequest: ClientRequestException $e")
         ApiResponse.Error.HttpError(e.response.status.value, e.errorBody())
     } catch (e: ServerResponseException) {
-        android.util.Log.d("TAG1", "safeRequest: ServerResponseException $e")
         ApiResponse.Error.HttpError(e.response.status.value, e.errorBody())
     } catch (e: IOException) {
-        android.util.Log.d("TAG1", "safeRequest: IOException $e")
         ApiResponse.Error.NetworkError
     } catch (e: HttpRequestTimeoutException) {
-        android.util.Log.d("TAG1", "safeRequest: timout $e")
         ApiResponse.Error.TimeoutError
     } catch (e: SerializationException) {
-        android.util.Log.d("TAG1", "safeRequest: SerializationException $e")
         ApiResponse.Error.SerializationError
     }
 
