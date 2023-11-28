@@ -29,7 +29,7 @@ kotlin {
         val commonMain by getting {
             dependencies {
                 implementation(project(mapOf("path" to ":core:common")))
-                implementation(project(mapOf("path" to ":features:trainings-diary:domain")))
+                implementation(project(mapOf("path" to ":features:trainings-diary:domain:api")))
                 implementation(project(mapOf("path" to ":data:networking:trainings-diary-api:api")))
                 implementation(Dependencies.Libraries.coroutines)
             }

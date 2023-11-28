@@ -28,7 +28,11 @@ kotlin {
     sourceSets {
         val commonMain by getting {
             dependencies {
-                //put your multiplatform dependencies here
+                implementation(Dependencies.Libraries.coroutines)
+                implementation(Dependencies.Libraries.mviCore)
+                implementation(Dependencies.Libraries.mviLogging)
+                implementation(Dependencies.Libraries.mviCoroutines)
+                implementation(Dependencies.Libraries.mviMain)
             }
         }
         val commonTest by getting {
@@ -41,8 +45,8 @@ kotlin {
 
 android {
     namespace = "com.earl.common"
-    compileSdk = 33
+    compileSdk = Dependencies.AndroidAppConfiguration.compileSdk
     defaultConfig {
-        minSdk = 26
+        minSdk = Dependencies.AndroidAppConfiguration.minSdk
     }
 }

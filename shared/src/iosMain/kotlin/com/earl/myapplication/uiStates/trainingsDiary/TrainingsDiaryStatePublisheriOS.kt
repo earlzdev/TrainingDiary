@@ -1,8 +1,8 @@
 package com.earl.myapplication.uiStates.trainingsDiary
 
-import com.earl.common.BaseMapper
-import com.earl.domain.api.TrainingsDiaryStatePublisher
-import com.earl.domain.api.TrainingsDiaryStore
+import com.earl.api.TrainingsDiaryStatePublisher
+import com.earl.api.TrainingsDiaryStore
+import com.earl.common.mappers.BaseMapper
 import com.earl.myapplication.uiStates.BaseUiStatePublisheriOS
 import com.earl.myapplication.utils.FlowWrapper
 import kotlinx.coroutines.flow.map

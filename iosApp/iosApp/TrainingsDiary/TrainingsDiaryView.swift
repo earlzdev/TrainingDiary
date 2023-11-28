@@ -41,9 +41,7 @@ struct TrainingDiaryContent: View {
                 ProgressView("Loading...")
                     .progressViewStyle(CircularProgressViewStyle(tint: .blue))
             } else if !uiState.trainingSessionsList.isEmpty {
-                List(uiState.trainingSessionsList, id: \.self) { training in
-                    TrainingSessionListItemView(trainingSession: training)
-                }
+                TrainingsDiaryMainView(uiState: uiState)
             }
         }
         .onAppear {

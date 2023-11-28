@@ -1,15 +1,21 @@
 package com.earl.networking_utils
 
 import io.ktor.client.HttpClient
+import io.ktor.client.plugins.HttpTimeout
 import io.ktor.client.plugins.contentnegotiation.ContentNegotiation
 import io.ktor.client.plugins.defaultRequest
+import io.ktor.client.plugins.observer.ResponseObserver
 import io.ktor.http.URLProtocol
 import io.ktor.serialization.kotlinx.json.json
+import kotlinx.coroutines.withTimeout
 import kotlinx.serialization.json.Json
 
 class BaseNetworkHttpClientProvider: NetworkClientProvider {
 
     private val baseHttpClient: HttpClient = HttpClient {
+        install(HttpTimeout) {
+            requestTimeoutMillis = 10_000
+        }
         install(ContentNegotiation) {
             json(Json {
                 ignoreUnknownKeys = true
@@ -27,7 +33,7 @@ class BaseNetworkHttpClientProvider: NetworkClientProvider {
 
     override fun provideBaseHttpClient(): HttpClient = baseHttpClient
 
-    // FIXME: Need to refactor and move mock build flag to BuildConfig
+    // TODO: Need to refactor and move mock build flag to BuildConfig
     private companion object {
 
         const val MOCK_URL = "45.12.19.184"

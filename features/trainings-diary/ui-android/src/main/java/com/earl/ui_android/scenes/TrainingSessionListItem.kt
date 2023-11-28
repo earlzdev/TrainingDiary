@@ -1,7 +1,8 @@
 package com.earl.ui_android.scenes
 
-import androidx.compose.foundation.BorderStroke
+import androidx.annotation.DrawableRes
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -9,15 +10,14 @@ import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
-import androidx.compose.foundation.selection.selectable
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.Card
-import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.ColorFilter
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.Font
 import androidx.compose.ui.text.font.FontFamily
@@ -25,7 +25,8 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.earl.android_design_system.theme.MyApplicationTheme
-import com.earl.domain.api.models.TrainingSession
+import com.earl.api.models.TrainingSession
+import com.earl.shared_resources.SharedResources
 import com.earl.ui_android.utils.IntExtensions.getAsDistanceInKm
 import com.earl.ui_android.utils.LongExtensions.getDateAsStringFromMillis
 import com.earl.ui_android.utils.LongExtensions.getDurationAsStringFromMillis
@@ -40,40 +41,31 @@ fun TrainingSessionListItem(
     Card (
         modifier = Modifier
             .fillMaxWidth()
-            .padding(8.dp)
+            .padding(vertical = 6.dp, horizontal = 12.dp)
             .clickable {
                 onTrainingClick(session)
             },
         elevation = 4.dp,
-        shape = RoundedCornerShape(10.dp), 
-        border = BorderStroke(2.dp, MaterialTheme.colors.onSurface)
+        shape = RoundedCornerShape(7.dp),
     ) {
-        Column(
+        Row(
             modifier = Modifier
-                .padding(horizontal = 15.dp, vertical = 13.dp)
-        ){
-            Row(
-                modifier = Modifier
-                    .fillMaxWidth(),
-                horizontalArrangement = Arrangement.SpaceBetween,
-                verticalAlignment = Alignment.CenterVertically
-            ) {
-                TrainingSessionTimeLabel(session.dateTime)
-                Text(
-                    text = session.duration.getDurationAsStringFromMillis(),
-                    fontFamily = FontFamily(Font(com.earl.shared_resources.SharedResources.fonts.Montserrat.semibold.fontResourceId)),
-                    fontSize = 15.sp
+                .background(
+                    Color(SharedResources.colors.cardBgColor.getColor(LocalContext.current))
+                        .copy(alpha = 0.7f)
                 )
-            }
-            Row(
+                .padding(vertical = 12.dp),
+            verticalAlignment = Alignment.CenterVertically,
+            horizontalArrangement = Arrangement.Center
+        ){
+            Column(
                 modifier = Modifier
-                    .fillMaxWidth(),
-                horizontalArrangement = Arrangement.SpaceBetween,
-                verticalAlignment = Alignment.CenterVertically
+                    .padding(start = 10.dp)
             ) {
+                TrainingSessionTimeLabel(sessionDate = session.dateTime)
                 TrainingTypeLabel(sessionType = session.type)
-                TrainingShortInfoLabel(session)
             }
+            TrainingShortInfoLabel(session = session)
         }
     }
 }
@@ -85,14 +77,14 @@ private fun TrainingSessionTimeLabel(
     Row {
         Text(
             text = sessionDate.getDateAsStringFromMillis(),
-            fontFamily = FontFamily(Font(com.earl.shared_resources.SharedResources.fonts.Montserrat.bold.fontResourceId)),
+            fontFamily = FontFamily(Font(SharedResources.fonts.Montserrat.semibold.fontResourceId)),
             fontSize = 14.sp
         )
         Text(
             modifier = Modifier
                 .padding(start = 10.dp),
             text = sessionDate.getTimeAsStringFromMillis(),
-            fontFamily = FontFamily(Font(com.earl.shared_resources.SharedResources.fonts.Montserrat.bold.fontResourceId)),
+            fontFamily = FontFamily(Font(SharedResources.fonts.Montserrat.semibold.fontResourceId)),
             fontSize = 14.sp
         )
     }
@@ -102,29 +94,15 @@ private fun TrainingSessionTimeLabel(
 private fun TrainingTypeLabel(
     sessionType: String
 ) {
-    val trainingTypeIconId = when(sessionType) {
-        "Running" -> com.earl.shared_resources.SharedResources.images.ic_run.drawableResId
-        "Swimming" -> com.earl.shared_resources.SharedResources.images.ic_swim.drawableResId
-        "Gym" -> com.earl.shared_resources.SharedResources.images.ic_gym.drawableResId
-        else -> throw IllegalStateException("No such training type! $sessionType")
-    }
     Row(
         modifier = Modifier
-            .padding(top = 7.dp),
+            .padding(top = 10.dp),
         verticalAlignment = Alignment.CenterVertically
     ) {
         Text(
             text = sessionType,
-            fontFamily = FontFamily(Font(com.earl.shared_resources.SharedResources.fonts.Montserrat.bold.fontResourceId)),
-            fontSize = 17.sp
-        )
-        Image(
-            modifier = Modifier
-                .size(32.dp)
-                .padding(start = 8.dp),
-            painter = painterResource(id = trainingTypeIconId),
-            contentDescription = null,
-            colorFilter = ColorFilter.tint(MaterialTheme.colors.onSurface)
+            fontFamily = FontFamily(Font(SharedResources.fonts.Montserrat.bold.fontResourceId)),
+            fontSize = 18.sp
         )
     }
 }
@@ -135,32 +113,58 @@ private fun TrainingShortInfoLabel(
 ) {
     Row(
         modifier = Modifier
-            .padding(top = 7.dp),
-        verticalAlignment = Alignment.CenterVertically
+            .fillMaxWidth(),
+        verticalAlignment = Alignment.CenterVertically,
+        horizontalArrangement = Arrangement.SpaceAround
     ) {
-        Text(
-            text = session.distance.getAsDistanceInKm(),
-            fontFamily = FontFamily(Font(com.earl.shared_resources.SharedResources.fonts.Montserrat.semibold.fontResourceId)),
-            fontSize = 15.sp
+        TrainingShortInfoBlock(
+            iconId = getIconForTraining(sessionType = session.type),
+            label = session.distance.getAsDistanceInKm()
         )
-        Text(
-            modifier = Modifier
-                .padding(start = 9.dp),
-            text = session.pulse.toString(),
-            fontFamily = FontFamily(Font(com.earl.shared_resources.SharedResources.fonts.Montserrat.semibold.fontResourceId)),
-            fontSize = 15.sp
+        TrainingShortInfoBlock(
+            iconId = SharedResources.images.ic_round_heart_rate.drawableResId,
+            label = session.pulse.toString()
         )
-        Image(
-            modifier = Modifier
-                .size(24.dp)
-                .padding(start = 3.dp),
-            painter = painterResource(
-                id = com.earl.shared_resources.SharedResources.images.ic_heart_rate.drawableResId
-            ),
-            contentDescription = null,
-            colorFilter = ColorFilter.tint(MaterialTheme.colors.onSurface)
+        TrainingShortInfoBlock(
+            iconId = SharedResources.images.ic_round_timer.drawableResId,
+            label = session.duration.getDurationAsStringFromMillis()
         )
     }
+}
+
+@Composable
+private fun TrainingShortInfoBlock(
+    @DrawableRes iconId: Int,
+    label: String
+) {
+    Column(
+        horizontalAlignment = Alignment.CenterHorizontally
+    ) {
+        Image(
+            modifier = Modifier
+                .size(32.dp)
+                .padding(start = 3.dp),
+            painter = painterResource(
+                id = iconId
+            ),
+            contentDescription = null,
+        )
+        Text(
+            modifier = Modifier
+                .padding(top = 5.dp),
+            text = label,
+            fontFamily = FontFamily(Font(SharedResources.fonts.Montserrat.medium.fontResourceId)),
+        )
+    }
+}
+
+private fun getIconForTraining(
+    sessionType: String
+): Int = when(sessionType) {
+    "Running" -> SharedResources.images.ic_round_run.drawableResId
+    "Swimming" -> SharedResources.images.ic_round_swim.drawableResId
+    "Gym" -> SharedResources.images.ic_round_gym.drawableResId
+    else -> throw IllegalStateException("No such training type! $sessionType")
 }
 
 @Preview

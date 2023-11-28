@@ -5,13 +5,16 @@ import com.arkivanov.mvikotlin.logging.logger.Logger
 import com.arkivanov.mvikotlin.logging.store.LoggingStoreFactory
 import com.arkivanov.mvikotlin.main.store.DefaultStoreFactory
 import com.earl.api.TrainingsDiaryNetworkApi
-import com.earl.common.BaseMapper
+import com.earl.api.TrainingsDiaryRepository
+import com.earl.api.TrainingsDiaryStore
+import com.earl.api.TrainingsDiaryUseCase
+import com.earl.api.models.TrainingSession
+import com.earl.api.models.TrainingSessionResponse
+import com.earl.common.mappers.BaseApiResponseListMapper
+import com.earl.data.TrainingSessionsRemoteToApiResponseMapper
 import com.earl.data.TrainingsDiaryRepositoryImpl
-import com.earl.domain.api.TrainingsDiaryStore
-import com.earl.domain.api.TrainingsDiaryRepository
-import com.earl.domain.api.TrainingsDiaryUseCase
-import com.earl.domain.implementation.TrainingsDiaryStoreFactory
-import com.earl.domain.implementation.TrainingsDiaryUseCaseImpl
+import com.earl.impl.TrainingsDiaryStoreFactory
+import com.earl.impl.TrainingsDiaryUseCaseImpl
 import com.earl.implementation.TrainingsDiaryNetworkApiImpl
 import com.earl.myapplication.platformModule
 import com.earl.networking_utils.BaseNetworkHttpClientProvider
@@ -32,7 +35,7 @@ private fun coreModule() = module {
     single<NetworkClientProvider> { BaseNetworkHttpClientProvider() }
     single<TrainingsDiaryNetworkApi> { TrainingsDiaryNetworkApiImpl(get()) }
 
-    factory<TrainingsDiaryRepository> { TrainingsDiaryRepositoryImpl(get()) }
+    factory<TrainingsDiaryRepository> { TrainingsDiaryRepositoryImpl(get(), get()) }
     factory<TrainingsDiaryUseCase> { TrainingsDiaryUseCaseImpl(get()) }
 
     /**
@@ -53,5 +56,9 @@ private fun coreModule() = module {
             }
         }
         LoggingStoreFactory(DefaultStoreFactory(), logger = logger)
+    }
+
+    single<BaseApiResponseListMapper<TrainingSessionResponse, TrainingSession>> {
+        TrainingSessionsRemoteToApiResponseMapper()
     }
 }

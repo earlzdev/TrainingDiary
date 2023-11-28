@@ -1,10 +1,17 @@
 package com.earl.ui_android
 
-import com.earl.common.ErrorModel
-import com.earl.domain.api.models.TrainingSession
+import com.earl.api.models.ErrorModel
+import com.earl.common.ErrorResponse
 
 data class UiState(
-    val trainingSessionsList: List<TrainingSession> = emptyList(),
+    val content: LoadedTrainingSessionContent = LoadedTrainingSessionContent(),
     val isLoading: Boolean = false,
-    val error: ErrorModel = ErrorModel.None
-)
+    val error: ErrorModel<ErrorResponse>? = null
+) {
+
+    fun errorOccurred(): Boolean = error != null
+
+    fun successfullyLoaded(): Boolean = with(content) {
+        trainingsList.trainings.isNotEmpty() && statistics != null
+    }
+}

@@ -42,6 +42,7 @@ kotlin {
     sourceSets {
         val commonMain by getting {
             dependencies {
+                implementation(project(mapOf("path" to ":core:common")))
                 implementation(ktorCore)
                 implementation(ktorLogging)
                 implementation(ktorSerialization)
