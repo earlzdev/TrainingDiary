@@ -44,7 +44,6 @@ dependencies {
     implementation(project(":shared"))
     implementation(project(":features:trainings-diary:ui-android"))
     implementation(project(":core:android-design-system"))
-    implementation(project(":android-navigation:api"))
-    implementation(project(":android-navigation:impl"))
+    implementation(project(":android-navigation"))
     androidAppDependencies()
 }

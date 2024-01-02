@@ -11,7 +11,7 @@ data class UiState(
 
     fun errorOccurred(): Boolean = error != null
 
-    fun successfullyLoaded(): Boolean = with(content) {
+    fun isSuccessfullyLoaded(): Boolean = with(content) {
         trainingsList.trainings.isNotEmpty() && statistics != null
     }
 }

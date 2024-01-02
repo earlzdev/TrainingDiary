@@ -6,5 +6,5 @@ import com.earl.common.ErrorResponse
 
 interface TrainingsDiaryNetworkApi {
 
-    suspend fun getTrainingSessions(): ApiResponse<List<TrainingSessionResponse>, ErrorResponse>
+    suspend fun fetchTrainingSessions(): ApiResponse<List<TrainingSessionResponse>, ErrorResponse>
 }

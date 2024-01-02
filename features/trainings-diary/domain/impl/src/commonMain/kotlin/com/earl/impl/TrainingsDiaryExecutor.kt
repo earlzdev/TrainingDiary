@@ -13,12 +13,12 @@ internal class MainExecutor(
         intent: TrainingsDiaryStore.Intent,
         getState: () -> TrainingsDiaryStore.State,
     ) = when (intent) {
-        is TrainingsDiaryStore.Intent.Load -> getTrainingSessions()
+        is TrainingsDiaryStore.Intent.Load -> fetchDiaryContent()
     }
 
-    private suspend fun getTrainingSessions() {
+    private suspend fun fetchDiaryContent() {
         dispatch(TrainingsDiaryStoreFactory.Message.SetLoading)
-        when(val response = repository.getMockTrainingSessions()) {
+        when(val response = repository.fetchDiaryContent()) {
             is ApiResponse.Success -> dispatch(
                 TrainingsDiaryStoreFactory.Message.SetTrainingsSessionsList(
                     response.body

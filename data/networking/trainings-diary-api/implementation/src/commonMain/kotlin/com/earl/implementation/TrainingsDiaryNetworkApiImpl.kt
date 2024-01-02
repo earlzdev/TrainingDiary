@@ -16,7 +16,7 @@ class TrainingsDiaryNetworkApiImpl(
         networkClientProvider.provideBaseHttpClient()
     }
 
-    override suspend fun getTrainingSessions(): ApiResponse<List<TrainingSessionResponse>, ErrorResponse> =
+    override suspend fun fetchTrainingSessions(): ApiResponse<List<TrainingSessionResponse>, ErrorResponse> =
         httpClient.safeRequest { url(trainingsSessions) }
 
     private companion object {

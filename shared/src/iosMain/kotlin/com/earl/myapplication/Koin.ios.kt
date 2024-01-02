@@ -3,11 +3,11 @@ package com.earl.myapplication
 import com.earl.api.TrainingsDiaryRepository
 import com.earl.api.TrainingsDiaryStatePublisher
 import com.earl.api.TrainingsDiaryStore
-import com.earl.api.TrainingsDiaryUseCase
+import com.earl.api.FetchTrainingsUseCase
 import com.earl.common.mappers.BaseMapper
 import com.earl.data.TrainingsDiaryRepositoryImpl
 import com.earl.impl.TrainingsDiaryStatePublisherImpl
-import com.earl.impl.TrainingsDiaryUseCaseImpl
+import com.earl.data.FetchTrainingsUseCaseImpl
 import com.earl.myapplication.di.initKoin
 import com.earl.myapplication.uiStates.mappers.TrainingsDiaryUiStateToIosStateMapper
 import com.earl.myapplication.uiStates.trainingsDiary.TrainingsDiaryStatePublisheriOS
@@ -33,7 +33,7 @@ actual fun platformModule() = module {
         scoped<BaseMapper<TrainingsDiaryStore.State, TrainingsDiaryUiStateiOS>> { TrainingsDiaryUiStateToIosStateMapper() }
         scoped { TrainingsDiaryStatePublisheriOS(get(), get()) }
 
-        scoped<TrainingsDiaryUseCase> { TrainingsDiaryUseCaseImpl(get()) }
+        scoped<FetchTrainingsUseCase> { FetchTrainingsUseCaseImpl(get()) }
         scoped { TrainingsDiaryUseCaseiOS(get()) }
     }
 }

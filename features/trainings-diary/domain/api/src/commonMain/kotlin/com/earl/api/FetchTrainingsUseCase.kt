@@ -4,7 +4,7 @@ import com.earl.api.models.TrainingSession
 import com.earl.common.ApiResponse
 import com.earl.common.ErrorResponse
 
-interface TrainingsDiaryRepository {
+interface FetchTrainingsUseCase {
 
-    suspend fun fetchDiaryContent(): ApiResponse<List<TrainingSession>, ErrorResponse>
+    suspend fun fetch(): ApiResponse<List<TrainingSession>, ErrorResponse>
 }

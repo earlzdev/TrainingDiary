@@ -7,14 +7,14 @@ import com.arkivanov.mvikotlin.main.store.DefaultStoreFactory
 import com.earl.api.TrainingsDiaryNetworkApi
 import com.earl.api.TrainingsDiaryRepository
 import com.earl.api.TrainingsDiaryStore
-import com.earl.api.TrainingsDiaryUseCase
+import com.earl.api.FetchTrainingsUseCase
 import com.earl.api.models.TrainingSession
 import com.earl.api.models.TrainingSessionResponse
 import com.earl.common.mappers.BaseApiResponseListMapper
 import com.earl.data.TrainingSessionsRemoteToApiResponseMapper
 import com.earl.data.TrainingsDiaryRepositoryImpl
 import com.earl.impl.TrainingsDiaryStoreFactory
-import com.earl.impl.TrainingsDiaryUseCaseImpl
+import com.earl.data.FetchTrainingsUseCaseImpl
 import com.earl.implementation.TrainingsDiaryNetworkApiImpl
 import com.earl.myapplication.platformModule
 import com.earl.networking_utils.BaseNetworkHttpClientProvider
@@ -35,8 +35,8 @@ private fun coreModule() = module {
     single<NetworkClientProvider> { BaseNetworkHttpClientProvider() }
     single<TrainingsDiaryNetworkApi> { TrainingsDiaryNetworkApiImpl(get()) }
 
-    factory<TrainingsDiaryRepository> { TrainingsDiaryRepositoryImpl(get(), get()) }
-    factory<TrainingsDiaryUseCase> { TrainingsDiaryUseCaseImpl(get()) }
+    factory<TrainingsDiaryRepository> { TrainingsDiaryRepositoryImpl(get()) }
+    factory<FetchTrainingsUseCase> { FetchTrainingsUseCaseImpl(get(), get()) }
 
     /**
      * Trainings Diary Feature Dependencies
@@ -52,7 +52,7 @@ private fun coreModule() = module {
     factory<StoreFactory> {
         val logger = object : Logger {
             override fun log(text: String) {
-                // TODO: logger mb Timber
+                // TODO: add Timber
             }
         }
         LoggingStoreFactory(DefaultStoreFactory(), logger = logger)
