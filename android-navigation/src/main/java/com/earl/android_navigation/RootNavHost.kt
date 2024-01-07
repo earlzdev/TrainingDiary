@@ -103,7 +103,7 @@ private fun getTitleByRootRoute(route:String?): String {
     return when (route) {
         RootTrainingsDiaryScreenPattern -> NavGraph.TrainingsDiaryNavGraph.title
         ProfileScreenPattern -> NavGraph.ProfileNavGraph.title
-        AddTrainingInfoScreenPattern -> "Training Info"
+        AddTrainingInfoScreenPattern -> "Training Information"
         AddTrainingDescriptionPattern -> "Description"
         else -> throw IllegalStateException("No such root route $route for title")
     }

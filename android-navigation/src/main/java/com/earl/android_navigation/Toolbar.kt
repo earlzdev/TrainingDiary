@@ -14,6 +14,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import com.earl.android_design_system.theme.TrainingsDiaryAppTheme
 import com.earl.shared_resources.SharedResources
 
@@ -36,7 +37,8 @@ fun Toolbar(
         title = {
             Text(
                 text = title,
-                color = Color.White
+                color = Color.White,
+                fontSize = 20.sp
             )
         },
         navigationIcon = if (showBackNavIcon) {
@@ -68,7 +70,8 @@ fun NextButton(
         modifier = Modifier
             .padding(end = 15.dp)
             .clickable { onActionClick() },
-        text = "Next"
+        text = "Next",
+        color = Color.White
     )
 }
 

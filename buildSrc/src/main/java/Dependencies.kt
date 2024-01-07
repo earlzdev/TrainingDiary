@@ -31,7 +31,7 @@ object Dependencies {
     private const val mviVersion = "3.0.2"
 
     object AndroidAppConfiguration {
-        const val compileSdk = 33
+        const val compileSdk = 34
         const val targetSdk = 33
         const val minSdk = 26
         const val versionCode = 1
