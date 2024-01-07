@@ -1,11 +1,11 @@
 package com.earl.myapplication.usecases
 
-import com.earl.domain.api.TrainingsDiaryUseCase
-import com.earl.domain.api.models.TrainingSession
+import com.earl.api.FetchTrainingsUseCase
+import com.earl.api.models.TrainingSession
 import kotlinx.coroutines.launch
 
 class TrainingsDiaryUseCaseiOS(
-    private val trainingsDiaryUseCase: TrainingsDiaryUseCase
+    private val trainingsDiaryUseCase: FetchTrainingsUseCase
 ): BaseUseCaseIos() {
 
     fun getTrainingSessions(
@@ -14,7 +14,7 @@ class TrainingsDiaryUseCaseiOS(
     ) {
         scope.launch {
             try {
-                onSuccess(trainingsDiaryUseCase.getTrainings())
+//                onSuccess(trainingsDiaryUseCase.fetch())
             } catch (e: Exception) {
                 onError(e)
             }

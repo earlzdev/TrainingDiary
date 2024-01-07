@@ -27,13 +27,13 @@ actual fun platformModule() = module {
 
     scope(named(TRAININGS_DIARY_SCOPE_NAME)) {
 
-        scoped<TrainingsDiaryRepository> { TrainingsDiaryRepositoryImpl(get(), get()) }
+        scoped<TrainingsDiaryRepository> { TrainingsDiaryRepositoryImpl(get()) }
 
         scoped<TrainingsDiaryStatePublisher> { TrainingsDiaryStatePublisherImpl(get()) }
         scoped<BaseMapper<TrainingsDiaryStore.State, TrainingsDiaryUiStateiOS>> { TrainingsDiaryUiStateToIosStateMapper() }
         scoped { TrainingsDiaryStatePublisheriOS(get(), get()) }
 
-        scoped<FetchTrainingsUseCase> { FetchTrainingsUseCaseImpl(get()) }
+        scoped<FetchTrainingsUseCase> { FetchTrainingsUseCaseImpl(get(), get()) }
         scoped { TrainingsDiaryUseCaseiOS(get()) }
     }
 }

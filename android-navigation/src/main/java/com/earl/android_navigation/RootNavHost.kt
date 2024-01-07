@@ -77,11 +77,12 @@ fun RootNavHost() {
                         selected = currentDestination?.hierarchy?.any { it.route == navGraph.route } == true,
                         onClick = {
                             navController.navigate(navGraph.route) {
-//                                popUpTo(navController.graph.startDestinationId) {
-//                                    saveState = true
-//                                }
                                 launchSingleTop = true
                                 restoreState = true
+                                popUpTo(navController.graph.startDestinationId) {
+                                    saveState = true
+                                    inclusive = true
+                                }
                             }
                         },
                         selectedContentColor = Color(SharedResources.colors.primary.getColor(LocalContext.current)),
