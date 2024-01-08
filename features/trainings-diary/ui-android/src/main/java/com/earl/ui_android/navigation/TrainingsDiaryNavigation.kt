@@ -57,6 +57,6 @@ internal fun NavGraphBuilder.addTrainingDescriptionScreen(
 
 ) {
     composable(AddTrainingDescriptionPattern) {
-        AddNewTrainingDescriptionScreen()
+        AddNewTrainingDescriptionScreen({})
     }
 }

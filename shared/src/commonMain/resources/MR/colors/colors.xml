@@ -5,6 +5,7 @@
     <color name="bottom_navbar_bg">0xFAFAFA</color>
     <color name="bottom_navbar_bg_unselected_item_color">0xD1D3D4</color>
     <color name="primary">0xF2630D</color>
+    <color name="tv_bg">0xF1F1F1</color>
     <color name="themedColor">
         <light>0xB92743FF</light>
         <dark>7CCFEEFF</dark>
